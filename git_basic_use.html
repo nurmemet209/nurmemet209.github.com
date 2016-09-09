@@ -721,130 +721,41 @@ pre {
   position: relative;
   border-color: #4078c0;
 }
-</style><title>resco_utils</title></head><body><article class="markdown-body"><h1>
-<a id="user-content-fresco基本用法" class="anchor" href="#fresco%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fresco基本用法</h1>
+</style><title>git_basic_use</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-git-基本操作" class="anchor" href="#git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>git 基本操作</h1>
 
-<h3>
-<a id="user-content-github项目地址" class="anchor" href="#github%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>github项目地址</h3>
+<p>远程分支同步到本地</p>
 
-<p><a href="https://github.com/nurmemet209/FrescoUtils">frescoUtils</a></p>
+<pre lang="git"><code>git checkout  branchName
+</code></pre>
 
-<p>检查缓存</p>
+<p>新建分支</p>
 
-<div class="highlight highlight-source-java"><pre> <span class="pl-smi">String</span> imgAddress <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1608/08/c29/25288629_1470644246858_mthumb.jpg<span class="pl-pds">"</span></span>;
- <span class="pl-k">boolean</span> isCacheInDisk <span class="pl-k">=</span> <span class="pl-smi">Fresco</span><span class="pl-k">.</span>getImagePipelineFactory()<span class="pl-k">.</span>getMainFileCache()<span class="pl-k">.</span>hasKey(<span class="pl-k">new</span> <span class="pl-smi">SimpleCacheKey</span>(imgAddress));</pre></div>
+<pre lang="git"><code>git branch branchName
+</code></pre>
 
-<p>缓存一张图片(只是缓存不显示)</p>
+<p>同步到远程服务器</p>
 
-<div class="highlight highlight-source-java"><pre> <span class="pl-smi">ImageRequest</span> request <span class="pl-k">=</span> <span class="pl-smi">ImageRequestBuilder</span>
-                    .newBuilderWithSource(<span class="pl-smi">Uri</span><span class="pl-k">.</span>parse(imgAddress))<span class="pl-k">.</span>build();
- <span class="pl-smi">Fresco</span><span class="pl-k">.</span>getImagePipelineFactory()<span class="pl-k">.</span>getImagePipeline()<span class="pl-k">.</span>prefetchToDiskCache(request, <span class="pl-c1">null</span>);</pre></div>
+<pre lang="git"><code>git push origin branchName
+</code></pre>
 
-<p>显示res,assets,local图片</p>
+<p>列出本地分支</p>
 
-<div class="highlight highlight-source-java"><pre>fromeAsset <span class="pl-k">=</span> (<span class="pl-smi">SimpleDraweeView</span>) findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>frome_asset);
-fromeAsset<span class="pl-k">.</span>setImageURI(<span class="pl-smi">Uri</span><span class="pl-k">.</span>parse(<span class="pl-s"><span class="pl-pds">"</span>asset:///frome_asset.jpg<span class="pl-pds">"</span></span>));<span class="pl-c">//注意是asset</span>
-fromeLocal <span class="pl-k">=</span> (<span class="pl-smi">SimpleDraweeView</span>) findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>frome_local);
-fromeLocal<span class="pl-k">.</span>setImageURI(<span class="pl-smi">Uri</span><span class="pl-k">.</span>parse(<span class="pl-s"><span class="pl-pds">"</span>file:///<span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-smi">Environment</span><span class="pl-k">.</span>getExternalStorageDirectory()<span class="pl-k">.</span>getAbsolutePath() <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>/aatest/frome_local.jpg<span class="pl-pds">"</span></span>));
-<span class="pl-c">//我是手机里新建个文件夹叫aatest里面放了张图片叫frome_local.jpg</span>
-fromeRes <span class="pl-k">=</span> (<span class="pl-smi">SimpleDraweeView</span>) findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>frome_res);
-fromeRes<span class="pl-k">.</span>setImageURI(<span class="pl-smi">Uri</span><span class="pl-k">.</span>parse(<span class="pl-s"><span class="pl-pds">"</span>res:///<span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>frome_res));
-</pre></div>
+<pre lang="git"><code>git branch 
+//带星号的是当前分支
+</code></pre>
 
-<p><a href="images/fresco/fresco_local_asset.png" target="_blank"><img src="images/fresco/fresco_local_asset.png" alt="" style="max-width:100%;"></a></p>
+<p><a href="images/git/show_branch_list.png" target="_blank"><img src="images/git/show_branch_list.png" alt="" style="max-width:100%;"></a></p>
 
-<p>Fresco使用okhttp</p>
+<p>分支切换</p>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-c">//图片加载速度会快很多的</span>
-<span class="pl-smi">OkHttpClient</span><span class="pl-k">.</span><span class="pl-smi">Builder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">OkHttpClient</span>.<span class="pl-smi">Builder</span>();
-builder<span class="pl-k">.</span>connectTimeout(<span class="pl-c1">15000</span>, <span class="pl-smi">TimeUnit</span><span class="pl-c1"><span class="pl-k">.</span>MILLISECONDS</span>);
-<span class="pl-smi">OkHttpClient</span> client<span class="pl-k">=</span>builder<span class="pl-k">.</span>build();
-<span class="pl-smi">ImagePipelineConfig</span> config <span class="pl-k">=</span> <span class="pl-smi">OkHttpImagePipelineConfigFactory</span>
-                .newBuilder(getApplicationContext(), client)
-                .build();
-        <span class="pl-smi">Fresco</span><span class="pl-k">.</span>initialize(<span class="pl-v">this</span>, config);
+<pre lang="git"><code>git checkout branchName
+</code></pre>
 
-<span class="pl-c">//  compile 'com.facebook.fresco:imagepipeline-okhttp3:0.12.0+'</span>
-</pre></div>
+<p>将某个分支合并到master</p>
 
-<p>显示gif</p>
+<pre lang="git"><code>//先用 git checkout master 命令切换到master分支 然后用如下命令
+git merge branchName
 
-<div class="highlight highlight-source-java"><pre><span class="pl-c">//gif显示</span>
-<span class="pl-c">//要添加这个库 compile 'com.facebook.fresco:animated-gif:0.12.0'</span>
-<span class="pl-smi">String</span> gifAddress <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>http://images.missyuan.com/attachments/day_110808/20110808_9fb3173c11a2f20005ee71TDj0m1C1nm.gif<span class="pl-pds">"</span></span>;
-<span class="pl-smi">DraweeController</span> gifController <span class="pl-k">=</span> <span class="pl-smi">Fresco</span><span class="pl-k">.</span>newDraweeControllerBuilder()<span class="pl-k">.</span>setUri(gifAddress)<span class="pl-k">.</span>setAutoPlayAnimations(<span class="pl-c1">true</span>)<span class="pl-k">.</span>build();
-gifImg<span class="pl-k">.</span>setController(gifController);
-</pre></div>
-
-<p>先加载低分辨率图片，在加载高分辨率图片</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> lowResUri <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>http://img4.imgtn.bdimg.com/it/u=885232197,1834744423&amp;fm=21&amp;gp=0.jpg<span class="pl-pds">"</span></span>;
-<span class="pl-smi">String</span> highResUri <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1212/06/c1/16396010_1354784049718.jpg<span class="pl-pds">"</span></span>;
-<span class="pl-smi">DraweeController</span> ctl <span class="pl-k">=</span> <span class="pl-smi">Fresco</span><span class="pl-k">.</span>newDraweeControllerBuilder()
-                .setLowResImageRequest(<span class="pl-smi">ImageRequest</span><span class="pl-k">.</span>fromUri(lowResUri))
-                .setImageRequest(<span class="pl-smi">ImageRequest</span><span class="pl-k">.</span>fromUri(highResUri))
-                .setOldController(img<span class="pl-k">.</span>getController())
-                .build();
-img<span class="pl-k">.</span>setController(ctl);</pre></div>
-
-<p>清理缓存</p>
-
-<div class="highlight highlight-source-java"><pre>
-<span class="pl-smi">ImagePipeline</span> imagePipeline <span class="pl-k">=</span> <span class="pl-smi">Fresco</span><span class="pl-k">.</span>getImagePipeline();
-<span class="pl-smi">Uri</span> uri <span class="pl-k">=</span> <span class="pl-smi">Uri</span><span class="pl-k">.</span>parse(imgAddress);
-
-<span class="pl-c">// 从内存中删除</span>
-imagePipeline<span class="pl-k">.</span>evictFromMemoryCache(uri);
-<span class="pl-c">// 从磁盘中删除</span>
-imagePipeline<span class="pl-k">.</span>evictFromDiskCache(uri);
-<span class="pl-c">// 同时从文件和磁盘中删除当前uri的缓存</span>
-imagePipeline<span class="pl-k">.</span>evictFromCache(uri);
-
-imagePipeline<span class="pl-k">.</span>clearMemoryCaches();
-imagePipeline<span class="pl-k">.</span>clearDiskCaches();
-<span class="pl-c">// 同时清除内存和磁盘缓存</span>
-imagePipeline<span class="pl-k">.</span>clearCaches();</pre></div>
-
-<p>代码设置属性</p>
-
-<div class="highlight highlight-source-java"><pre>test <span class="pl-k">=</span> (<span class="pl-smi">SimpleDraweeView</span>) findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>hiechery_test);
-test<span class="pl-k">.</span>setImageURI(imgAddress);
-<span class="pl-smi">GenericDraweeHierarchy</span> hierarchy <span class="pl-k">=</span> test<span class="pl-k">.</span>getHierarchy();
-<span class="pl-smi">RoundingParams</span> roundingParams <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">RoundingParams</span>();
-<span class="pl-c">// 设置边框颜色和宽度</span>
-roundingParams<span class="pl-k">.</span>setBorder(<span class="pl-smi">Color</span><span class="pl-c1"><span class="pl-k">.</span>RED</span>, <span class="pl-c1">10.0f</span>);
-<span class="pl-c">// 设置圆角半径</span>
-roundingParams<span class="pl-k">.</span>setCornersRadius(<span class="pl-c1">20.0f</span>);
-hierarchy<span class="pl-k">.</span>setRoundingParams(roundingParams);
-roundingParams<span class="pl-k">.</span>setRoundAsCircle(<span class="pl-c1">true</span>);
-
-<span class="pl-c">//drawee支持如下属性,并且以下属性都可以用GenericDraweeHierarchy代码控制</span>
-<span class="pl-c">//fresco:fadeDuration="300" // 淡入淡出的持续时间</span>
-<span class="pl-c">// fresco:actualImageScaleType="focusCrop"  // 实际图像的缩放类型</span>
-<span class="pl-c">//fresco:placeholderImage="@color/wait_color"  //占位图</span>
-<span class="pl-c">// fresco:placeholderImageScaleType="fitCenter" //占位图的缩放类型</span>
-<span class="pl-c">// fresco:failureImage="@drawable/error" //下载失败显示的图片</span>
-<span class="pl-c">//fresco:failureImageScaleType="centerInside" //失败图的缩放类型</span>
-<span class="pl-c">// fresco:retryImage="@drawable/retrying"</span>
-<span class="pl-c">//图片加载失败时显示，提示用户点击重新加载，重复加载4次还是没有加载出来的时候才会显示failureImage的图片</span>
-<span class="pl-c">//fresco:retryImageScaleType="centerCrop" //重新加载的图片缩放类型</span>
-<span class="pl-c">// fresco:progressBarImage="@drawable/progress_bar" //进度条图片</span>
-<span class="pl-c">// fresco:progressBarImageScaleType="centerInside"</span>
-<span class="pl-c">// fresco:progressBarAutoRotateInterval="1000"</span>
-<span class="pl-c">//进度图自动旋转间隔时间(单位：毫秒ms)</span>
-<span class="pl-c">// fresco:backgroundImage="@color/blue"</span>
-<span class="pl-c">//背景图片，这里的背景图片首先被绘制</span>
-<span class="pl-c">//fresco:overlayImage="@drawable/watermark"</span>
-<span class="pl-c">// 设置叠加图，在xml中只能设置一张叠加图片，如果需要多张图片的话，需要在java代码中设置哦</span>
-<span class="pl-c">// fresco:pressedStateOverlayImage="@color/red"</span>
-<span class="pl-c">// 设置点击状态下的叠加图</span>
-<span class="pl-c">// fresco:roundAsCircle="false" //设置为圆形图</span>
-<span class="pl-c">// fresco:roundedCornerRadius="1dp" // 圆角半径</span>
-<span class="pl-c">//  fresco:roundTopLeft="true" // 左上角是否为圆角</span>
-<span class="pl-c">// fresco:roundTopRight="false"</span>
-<span class="pl-c">// fresco:roundBottomLeft="false"</span>
-<span class="pl-c">// fresco:roundBottomRight="true"</span>
-<span class="pl-c">//fresco:roundWithOverlayColor="@color/corner_color"</span>
-<span class="pl-c">// fresco:roundingBorderWidth="2dp" //边框的宽度</span>
-<span class="pl-c">// fresco:roundingBorderColor="@color/border_color" //边框颜色</span></pre></div>
+</code></pre>
 </article></body></html>
