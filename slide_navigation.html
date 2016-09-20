@@ -721,25 +721,120 @@ pre {
   position: relative;
   border-color: #4078c0;
 }
-</style><title>window_attr</title></head><body><article class="markdown-body"><h1>
-<a id="user-content-window属性" class="anchor" href="#window%E5%B1%9E%E6%80%A7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Window属性</h1>
+</style><title>slide_navigation</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-字母滑动定位控件开发" class="anchor" href="#%E5%AD%97%E6%AF%8D%E6%BB%91%E5%8A%A8%E5%AE%9A%E4%BD%8D%E6%8E%A7%E4%BB%B6%E5%BC%80%E5%8F%91" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>字母滑动定位控件开发</h1>
 
-<div class="highlight highlight-text-xml"><pre> &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:windowFrame<span class="pl-pds">"</span></span>&gt;@mipmap/setup_&lt;/<span class="pl-ent">item</span>&gt;</pre></div>
+<p><a href="https://github.com/nurmemet209/NavigationBar">github地址</a><br>
+实现原理很简单，先上个图看看效果</p>
 
-<p>官方说明
-Drawable to use as a frame around the window.
-<a href="https://developer.android.com/reference/android/R.attr.html#windowFrame">网址</a></p>
+<p><a href="images/slide_navigation.gif" target="_blank"><img src="images/slide_navigation.gif" alt="" style="max-width:100%;"></a></p>
 
-<p>每刷新window都会绘制此drawable不影响任何触摸事件
-以下是滑动屏幕时的动画</p>
+<p>知识点  </p>
 
-<p><a href="images/window_frame.gif" target="_blank"><img src="images/window_frame.gif" alt="" style="max-width:100%;"></a></p>
+<ul>
+<li>触摸事件的处理</li>
+</ul>
 
-<div class="highlight highlight-text-xml"><pre> &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android:windowContentOverlay<span class="pl-pds">"</span></span>&gt;@mipmap/setup_&lt;/<span class="pl-ent">item</span>&gt;
-</pre></div>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">boolean</span> onTouchEvent(<span class="pl-smi">MotionEvent</span> event) {
 
-<p>官方说明
-This Drawable is overlaid over the foreground of the Window's content area, usually to place a shadow below the title.
-此drawable 用于绘制覆盖窗口内容区域，通常用于绘制title下面的阴影效果.<a href="https://developer.android.com/reference/android/R.attr.html#windowContentOverlay">网址</a>
-其实这跟windowFrame一样的，只是两个的绘制区域不一样</p>
+        <span class="pl-k">final</span> <span class="pl-k">float</span> x <span class="pl-k">=</span> event<span class="pl-k">.</span>getX();
+        <span class="pl-k">final</span> <span class="pl-k">float</span> y <span class="pl-k">=</span> event<span class="pl-k">.</span>getY();
+
+        <span class="pl-k">int</span> pos <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>;
+        <span class="pl-smi">String</span> letter;
+        <span class="pl-k">int</span> adapterPos;
+        <span class="pl-k">switch</span> (event<span class="pl-k">.</span>getActionMasked()) {
+            <span class="pl-k">case</span> <span class="pl-smi">MotionEvent</span><span class="pl-c1"><span class="pl-k">.</span>ACTION_DOWN</span><span class="pl-k">:</span> {
+                <span class="pl-c">//判断触摸点是否在navigationContainer里面</span>
+                <span class="pl-k">if</span> (<span class="pl-k">!</span>mChildRect<span class="pl-k">.</span>contains(x, y)) {
+                    <span class="pl-k">return</span> <span class="pl-c1">false</span>;
+                }
+                bacgroundIn();
+                pos <span class="pl-k">=</span> (<span class="pl-k">int</span>) (y <span class="pl-k">-</span> mNavigationContainer<span class="pl-k">.</span>getPaddingTop() <span class="pl-k">-</span> mNavigationContainer<span class="pl-k">.</span>getTop()) <span class="pl-k">/</span> getLetterHeight();
+                mPosition <span class="pl-k">=</span> pos;
+                letter <span class="pl-k">=</span> mAbcList<span class="pl-k">.</span>get(mPosition);
+                adapterPos <span class="pl-k">=</span> mAbcMap<span class="pl-k">.</span>get(letter);
+                mToastView<span class="pl-k">.</span>setText(letter);
+                scroll2Position(adapterPos, mRecycleView);
+            }
+
+            <span class="pl-k">break</span>;
+            <span class="pl-k">case</span> <span class="pl-smi">MotionEvent</span><span class="pl-c1"><span class="pl-k">.</span>ACTION_MOVE</span><span class="pl-k">:</span>
+                pos <span class="pl-k">=</span> (<span class="pl-k">int</span>) (y <span class="pl-k">-</span> mNavigationContainer<span class="pl-k">.</span>getPaddingTop() <span class="pl-k">-</span> mNavigationContainer<span class="pl-k">.</span>getTop()) <span class="pl-k">/</span> getLetterHeight();
+                <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>pos=<span class="pl-pds">"</span></span> <span class="pl-k">+</span> pos);
+                <span class="pl-k">if</span> (pos <span class="pl-k">!=</span> mPosition) {
+                    letter <span class="pl-k">=</span> mAbcList<span class="pl-k">.</span>get(pos);
+                    adapterPos <span class="pl-k">=</span> mAbcMap<span class="pl-k">.</span>get(letter);
+                    scroll2Position(adapterPos, mRecycleView);
+                    mToastView<span class="pl-k">.</span>setText(letter);
+                }
+                mPosition <span class="pl-k">=</span> pos;
+                <span class="pl-k">break</span>;
+            <span class="pl-k">case</span> <span class="pl-smi">MotionEvent</span><span class="pl-c1"><span class="pl-k">.</span>ACTION_UP</span><span class="pl-k">:</span>
+            <span class="pl-k">case</span> <span class="pl-smi">MotionEvent</span><span class="pl-c1"><span class="pl-k">.</span>ACTION_CANCEL</span><span class="pl-k">:</span>
+                backgroundOut();
+                mPosition <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>;
+                <span class="pl-k">break</span>;
+            <span class="pl-k">default</span><span class="pl-k">:</span>
+                <span class="pl-k">break</span>;
+        }
+        <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+    }</pre></div>
+
+<ul>
+<li>代码实现圆角矩形背景</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre> <span class="pl-k">private</span> <span class="pl-smi">Drawable</span> getToastViewBackground(){
+        <span class="pl-c">//用两个参数表示一个角的角度（有点像椭圆表示方法）</span>
+        <span class="pl-smi">RoundRectShape</span> shape<span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-smi">RoundRectShape</span>(<span class="pl-k">new</span> <span class="pl-smi">float</span>[]{<span class="pl-c1">16</span>,<span class="pl-c1">16</span>,<span class="pl-c1">16</span>,<span class="pl-c1">16</span>,<span class="pl-c1">16</span>,<span class="pl-c1">16</span>,<span class="pl-c1">16</span>,<span class="pl-c1">16</span>},<span class="pl-c1">null</span>,<span class="pl-c1">null</span>);
+        <span class="pl-smi">ShapeDrawable</span> shapeDrawable<span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-smi">ShapeDrawable</span>(shape);
+        <span class="pl-smi">Paint</span> p<span class="pl-k">=</span>shapeDrawable<span class="pl-k">.</span>getPaint();
+        p<span class="pl-k">.</span>setColor(<span class="pl-smi">Color</span><span class="pl-c1"><span class="pl-k">.</span>BLACK</span>);
+        p<span class="pl-k">.</span>setAlpha(navigationMaxAlpha);
+        p<span class="pl-k">.</span>setStyle(<span class="pl-smi">Paint</span><span class="pl-k">.</span><span class="pl-smi">Style</span><span class="pl-c1"><span class="pl-k">.</span>FILL</span>);
+        ;
+        <span class="pl-k">return</span> shapeDrawable;
+    }</pre></div>
+
+<ul>
+<li>navigationbar高度（测量）</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre> <span class="pl-k">@Override</span>
+    <span class="pl-k">protected</span> <span class="pl-k">void</span> onMeasure(<span class="pl-k">int</span> widthMeasureSpec, <span class="pl-k">int</span> heightMeasureSpec) {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onMeasure(widthMeasureSpec, heightMeasureSpec);
+        <span class="pl-k">if</span> (mNavigationContainer <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">int</span> parentHeight <span class="pl-k">=</span> getMeasuredHeight();
+            <span class="pl-c">//先给字母控件给个固定的高度，如果，总的高度超出父控件，根据父控件的高度平均分配字母控件的高度，进行重新测量</span>
+            <span class="pl-k">if</span> (parentHeight <span class="pl-k">&lt;</span> mAbcList<span class="pl-k">.</span>size() <span class="pl-k">*</span> mLetterItemHeight) {
+                <span class="pl-k">int</span> height <span class="pl-k">=</span> parentHeight <span class="pl-k">/</span> mAbcList<span class="pl-k">.</span>size();
+                <span class="pl-k">int</span> specWidth <span class="pl-k">=</span> <span class="pl-smi">MeasureSpec</span><span class="pl-k">.</span>makeMeasureSpec(mNavigationWidth, <span class="pl-smi">MeasureSpec</span><span class="pl-c1"><span class="pl-k">.</span>EXACTLY</span>);
+                <span class="pl-k">int</span> specHeight <span class="pl-k">=</span> <span class="pl-smi">MeasureSpec</span><span class="pl-k">.</span>makeMeasureSpec(height, <span class="pl-smi">MeasureSpec</span><span class="pl-c1"><span class="pl-k">.</span>EXACTLY</span>);
+                <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> mAbcList<span class="pl-k">.</span>size(); i<span class="pl-k">++</span>) {
+                    mNavigationContainer<span class="pl-k">.</span>getChildAt(i)<span class="pl-k">.</span>measure(specWidth, specHeight);
+                }
+            }
+        }
+    }</pre></div>
+
+<ul>
+<li>RecyclerView滑动到指定的位置</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre> <span class="pl-k">private</span> <span class="pl-k">void</span> scroll2Position(<span class="pl-k">int</span> index, <span class="pl-smi">RecyclerView</span> recyclerView) {
+        <span class="pl-smi">LinearLayoutManager</span> manager <span class="pl-k">=</span> (<span class="pl-smi">LinearLayoutManager</span>) recyclerView<span class="pl-k">.</span>getLayoutManager();
+        <span class="pl-k">int</span> firstPosition <span class="pl-k">=</span> manager<span class="pl-k">.</span>findFirstVisibleItemPosition();
+        <span class="pl-k">int</span> lastPosition <span class="pl-k">=</span> manager<span class="pl-k">.</span>findLastVisibleItemPosition();
+        <span class="pl-k">if</span> (index <span class="pl-k">&lt;=</span> firstPosition) {
+            manager<span class="pl-k">.</span>scrollToPosition(index);
+        } <span class="pl-k">else</span> <span class="pl-k">if</span> (index <span class="pl-k">&lt;=</span> lastPosition) {
+            <span class="pl-k">int</span> top <span class="pl-k">=</span> recyclerView<span class="pl-k">.</span>getChildAt(index <span class="pl-k">-</span> firstPosition)<span class="pl-k">.</span>getTop();
+            recyclerView<span class="pl-k">.</span>scrollBy(<span class="pl-c1">0</span>, top);
+        } <span class="pl-k">else</span> {
+            <span class="pl-c">//让指定的Index出于可见状态并且index与布局开始点（默认是(0,0)点）的距离为0</span>
+            manager<span class="pl-k">.</span>scrollToPositionWithOffset(index, <span class="pl-c1">0</span>);
+        }
+    }</pre></div>
 </article></body></html>

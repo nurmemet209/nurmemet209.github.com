@@ -33,6 +33,12 @@ backgournd设置为透明这样可以防止过度绘制，background应该是dec
 是因为图片图像操作本身也是比较耗时的，所以适当的去控制图像大小也是一个办法
 * 布局优化
 
-布局嵌套太多也会导致界面渲染慢，关于布局优化我会令写篇文章专门讲述再次大家知道复杂布局对app启动也有影响就可以
+布局嵌套太多也会导致界面渲染慢，关于布局优化我会令写篇文章专门讲述再次大家知道复杂布局对app启动也有影响就可以。
+这里顺便讲下activity的布局结构，布局结构可以用facebook的一个插件就可以看得到，官网 [http://facebook.github.io/stetho/](http://facebook.github.io/stetho/) ,还有这个布局结构也不是固定的，它是根据窗口的属性去加载布局（源码 PhoneWindow generateLayout函数）
+
+
+
+![](images/activity_decoreview.png)
+
 
 
