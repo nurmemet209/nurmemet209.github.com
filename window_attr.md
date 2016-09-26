@@ -25,3 +25,8 @@ Drawable to use as a frame around the window.
 This Drawable is overlaid over the foreground of the Window's content area, usually to place a shadow below the title.
 此drawable 用于绘制覆盖窗口内容区域，通常用于绘制title下面的阴影效果.[网址](https://developer.android.com/reference/android/R.attr.html#windowContentOverlay)
 其实这跟windowFrame一样的，只是两个的绘制区域不一样,windowContentOverlay是不包括title区域
+
+
+fitsSystemWindows  
+Boolean internal attribute to adjust view layout based on system windows such as the status bar. If true, adjusts the padding of this view to leave space for the system windows. Will only take effect if this view is in a non-embedded activity.  
+navigationBarColor  
