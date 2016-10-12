@@ -105,3 +105,43 @@ progress_indeterminate_rotation_material.xml
     android:valueTo="720"
 android:valueType="floatType" />
 ```
+
+
+* themes_holo 主题下实现 
+
+themes_holo.xml
+```xml
+ <item name="progressBarStyle">@style/Widget.Holo.ProgressBar</item>
+```
+
+styles_holo.xml
+```xml
+ <style name="Widget.Holo.ProgressBar" parent="Widget.ProgressBar">
+        <item name="indeterminateDrawable">@drawable/progress_medium_holo</item>
+</style>
+```
+
+progress_medium_holo.xml
+```xml
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <rotate
+             android:drawable="@drawable/spinner_48_outer_holo"
+             android:pivotX="50%"
+             android:pivotY="50%"
+             android:fromDegrees="0"
+             android:toDegrees="1080" />
+    </item>
+    <item>
+        <rotate
+             android:drawable="@drawable/spinner_48_inner_holo"
+             android:pivotX="50%"
+             android:pivotY="50%"
+             android:fromDegrees="720"
+             android:toDegrees="0" />
+    </item>
+</layer-list>
+```
+
+![spinner_48_outer_holo.png](images/spinner_48_outer_holo.png)
+![spinner_48_inner_holo.png](images/spinner_48_inner_holo.png)

@@ -824,4 +824,42 @@ pre {
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">valueFrom</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span>
     <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">valueTo</span>=<span class="pl-s"><span class="pl-pds">"</span>720<span class="pl-pds">"</span></span>
 android:valueType=<span class="pl-s"><span class="pl-pds">"</span>floatType<span class="pl-pds">"</span></span> /&gt;</pre></div>
+
+<ul>
+<li>themes_holo 主题下实现 </li>
+</ul>
+
+<p>themes_holo.xml</p>
+
+<div class="highlight highlight-text-xml"><pre> &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>progressBarStyle<span class="pl-pds">"</span></span>&gt;@style/Widget.Holo.ProgressBar&lt;/<span class="pl-ent">item</span>&gt;</pre></div>
+
+<p>styles_holo.xml</p>
+
+<div class="highlight highlight-text-xml"><pre> &lt;<span class="pl-ent">style</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>Widget.Holo.ProgressBar<span class="pl-pds">"</span></span> <span class="pl-e">parent</span>=<span class="pl-s"><span class="pl-pds">"</span>Widget.ProgressBar<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">item</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>indeterminateDrawable<span class="pl-pds">"</span></span>&gt;@drawable/progress_medium_holo&lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">style</span>&gt;</pre></div>
+
+<p>progress_medium_holo.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">layer-list</span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">item</span>&gt;
+        &lt;<span class="pl-ent">rotate</span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">drawable</span>=<span class="pl-s"><span class="pl-pds">"</span>@drawable/spinner_48_outer_holo<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pivotX</span>=<span class="pl-s"><span class="pl-pds">"</span>50%<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pivotY</span>=<span class="pl-s"><span class="pl-pds">"</span>50%<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fromDegrees</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">toDegrees</span>=<span class="pl-s"><span class="pl-pds">"</span>1080<span class="pl-pds">"</span></span> /&gt;
+    &lt;/<span class="pl-ent">item</span>&gt;
+    &lt;<span class="pl-ent">item</span>&gt;
+        &lt;<span class="pl-ent">rotate</span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">drawable</span>=<span class="pl-s"><span class="pl-pds">"</span>@drawable/spinner_48_inner_holo<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pivotX</span>=<span class="pl-s"><span class="pl-pds">"</span>50%<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">pivotY</span>=<span class="pl-s"><span class="pl-pds">"</span>50%<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">fromDegrees</span>=<span class="pl-s"><span class="pl-pds">"</span>720<span class="pl-pds">"</span></span>
+             <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">toDegrees</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span> /&gt;
+    &lt;/<span class="pl-ent">item</span>&gt;
+&lt;/<span class="pl-ent">layer-list</span>&gt;</pre></div>
+
+<p><a href="images/spinner_48_outer_holo.png" target="_blank"><img src="images/spinner_48_outer_holo.png" alt="spinner_48_outer_holo.png" style="max-width:100%;"></a>
+<a href="images/spinner_48_inner_holo.png" target="_blank"><img src="images/spinner_48_inner_holo.png" alt="spinner_48_inner_holo.png" style="max-width:100%;"></a></p>
 </article></body></html>
