@@ -63,5 +63,15 @@ git push origin
 还有一种是首先用git status 命令查看更改然后用 git commit -a 命令提交所有更改到本地仓库，然后用 git push origin 提交到远程仓库
 * git 取消跟踪某个文件
 ```git
-git rm --cached file-name
+//git reset HEAD android_animation.md
+$ git reset HEAD file-name
 ```
+* 添加到git 跟踪
+```git
+//git add android-animation.md
+git add file-name
+```
+![](images/git_basic_use.png)        
+其     实 git提示说的很清楚了已经   
+
+
