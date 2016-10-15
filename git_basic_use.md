@@ -72,14 +72,14 @@ $ git reset HEAD file-name
 git add file-name
 ```
 
-![](images/git_basic_use.png)　　　
-其实 git提示说的很清楚了已经  
+![](images/git_basic_use.png)  
+其实 git提示说的很清楚了已经   
 changes to be commited:
 changes not staged for commited:
 untracked files:
 
 git 操作流程是先用 如果是untracked files（是没被添加到git的文件） 用git add file-name 命令添加到暂存区，如果是changes to be commited 的文件用git add file-name 命令添加到暂存区或者用git checkout 命令覆盖本地更改，如果是git changes to be commited文件那么用命令 git commit -m notes(是注释) 来提交到本地仓库，再用git push origin命令提交远程仓库
-
-* dklsfdslfj
-dflksdf  
+* git commit
+可以用git commit -m notes(是注释) 提交到本地仓库，如果忘了后面的-m notes 而用git commit 命令git 会打开Vim让你输入
+notes 你可输入notes 再按Esc键进入命令模式再输入:wq保存并返回shell，，此时已经陈功提交到远程仓库
 
