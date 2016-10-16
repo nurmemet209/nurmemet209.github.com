@@ -721,11 +721,173 @@ pre {
   position: relative;
   border-color: #4078c0;
 }
-</style><title>android_animation</title></head><body><article class="markdown-body"><h1>
-<a id="user-content-android-动画" class="anchor" href="#android-%E5%8A%A8%E7%94%BB" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>android 动画</h1>
+</style><title>beseir_cart_anim</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-贝塞尔曲线购物车动画" class="anchor" href="#%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF%E8%B4%AD%E7%89%A9%E8%BD%A6%E5%8A%A8%E7%94%BB" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>贝塞尔曲线购物车动画</h1>
+
+<p>实现效果<br>
+<a href="animation_images/throw_anim.gif" target="_blank"><img src="animation_images/throw_anim.gif" alt="" style="max-width:100%;"></a></p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">package</span> <span class="pl-smi">com.nurmemet.bezeircurve</span>;
+
+<span class="pl-k">import</span> <span class="pl-smi">android.animation.Animator</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.animation.ValueAnimator</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.content.Context</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.graphics.Path</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.graphics.PathMeasure</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.graphics.PointF</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.view.ViewGroup</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.widget.ImageView</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.widget.LinearLayout</span>;
+
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Created by nurmemet on 10/16/2016.</span>
+<span class="pl-c"> */</span>
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">ThrowAnim</span> {
+
+    <span class="pl-k">private</span> <span class="pl-k">static</span> <span class="pl-k">final</span> <span class="pl-k">boolean</span> isDebug <span class="pl-k">=</span> <span class="pl-c1">false</span>;
+    <span class="pl-k">private</span> <span class="pl-smi">ImageView</span> mAnimItem;
+    <span class="pl-k">private</span> <span class="pl-k">int</span> mDuration <span class="pl-k">=</span> <span class="pl-c1">1000</span>;
+    <span class="pl-k">private</span> <span class="pl-smi">PointF</span> mStart;
+    <span class="pl-k">private</span> <span class="pl-smi">PointF</span> mEnd;
+
+    <span class="pl-k">private</span> <span class="pl-smi">ViewGroup</span> mContentView;
+    <span class="pl-k">private</span> <span class="pl-smi">Context</span> mContext;
+    <span class="pl-k">private</span> <span class="pl-k">int</span> mContentTop;
+    <span class="pl-k">private</span> <span class="pl-smi">Path</span> mPath;
+    <span class="pl-k">private</span> <span class="pl-smi">PathMeasure</span> mPathMeasuer;
+    <span class="pl-k">private</span> <span class="pl-k">float</span>[] mDesPoint <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">float</span>[<span class="pl-c1">2</span>];
+
+    <span class="pl-k">private</span> <span class="pl-smi">ThrowListener</span> mOnThrowListener;
+
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setOnThrowListener</span>(<span class="pl-smi">ThrowListener</span> <span class="pl-v">onThrowListener</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>mOnThrowListener <span class="pl-k">=</span> onThrowListener;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-en">ThrowAnim</span>(<span class="pl-smi">Context</span> <span class="pl-v">mContext</span>, <span class="pl-smi">ViewGroup</span> <span class="pl-v">contentView</span>, <span class="pl-smi">PointF</span> <span class="pl-v">mEnd</span>, <span class="pl-smi">PointF</span> <span class="pl-v">mStart</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>mContext <span class="pl-k">=</span> mContext;
+        <span class="pl-v">this</span><span class="pl-k">.</span>mContentView <span class="pl-k">=</span> contentView;
+        <span class="pl-v">this</span><span class="pl-k">.</span>mEnd <span class="pl-k">=</span> mEnd;
+        <span class="pl-v">this</span><span class="pl-k">.</span>mStart <span class="pl-k">=</span> mStart;
+        mPath <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Path</span>();
+        mPathMeasuer <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PathMeasure</span>();
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">move</span>() {
+        mPath<span class="pl-k">.</span>reset();
+        mPath<span class="pl-k">.</span>moveTo(mStart<span class="pl-k">.</span>x, mStart<span class="pl-k">.</span>y);
+        mPath<span class="pl-k">.</span>quadTo(mEnd<span class="pl-k">.</span>x, mStart<span class="pl-k">.</span>y, mEnd<span class="pl-k">.</span>x, mEnd<span class="pl-k">.</span>y);
+        mPathMeasuer<span class="pl-k">.</span>setPath(mPath, <span class="pl-c1">false</span>);
+        <span class="pl-k">int</span>[] contentL <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">2</span>];
+        mContentView<span class="pl-k">.</span>getLocationInWindow(contentL);
+        mContentTop <span class="pl-k">=</span> contentL[<span class="pl-c1">1</span>];
+        mAnimItem <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ImageView</span>(mContext);
+        mAnimItem<span class="pl-k">.</span>setImageResource(<span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>ic_launcher);
+        mContentView<span class="pl-k">.</span>addView(mAnimItem, <span class="pl-k">new</span> <span class="pl-smi">LinearLayout</span>.<span class="pl-smi">LayoutParams</span>(<span class="pl-smi">LinearLayout</span><span class="pl-k">.</span><span class="pl-smi">LayoutParams</span><span class="pl-c1"><span class="pl-k">.</span>WRAP_CONTENT</span>, <span class="pl-smi">LinearLayout</span><span class="pl-k">.</span><span class="pl-smi">LayoutParams</span><span class="pl-c1"><span class="pl-k">.</span>WRAP_CONTENT</span>));
+        <span class="pl-k">final</span> <span class="pl-smi">ValueAnimator</span> anim <span class="pl-k">=</span> <span class="pl-smi">ValueAnimator</span><span class="pl-k">.</span>ofFloat(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>);
+        anim<span class="pl-k">.</span>addUpdateListener(<span class="pl-k">new</span> <span class="pl-smi">ValueAnimator</span>.<span class="pl-smi">AnimatorUpdateListener</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onAnimationUpdate</span>(<span class="pl-smi">ValueAnimator</span> <span class="pl-v">animation</span>) {
+                <span class="pl-k">final</span> <span class="pl-k">float</span> value <span class="pl-k">=</span> (<span class="pl-k">float</span>) animation<span class="pl-k">.</span>getAnimatedValue();
+                <span class="pl-k">final</span> <span class="pl-k">float</span> length <span class="pl-k">=</span> mPathMeasuer<span class="pl-k">.</span>getLength();
+                mPathMeasuer<span class="pl-k">.</span>getPosTan(length <span class="pl-k">*</span> value, mDesPoint, <span class="pl-c1">null</span>);
+            }
+        });
+        anim<span class="pl-k">.</span>setDuration(mDuration);
+        anim<span class="pl-k">.</span>addUpdateListener(<span class="pl-k">new</span> <span class="pl-smi">ValueAnimator</span>.<span class="pl-smi">AnimatorUpdateListener</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onAnimationUpdate</span>(<span class="pl-smi">ValueAnimator</span> <span class="pl-v">animation</span>) {
+
+                mAnimItem<span class="pl-k">.</span>setTranslationX(mDesPoint[<span class="pl-c1">0</span>]);
+                mAnimItem<span class="pl-k">.</span>setTranslationY(mDesPoint[<span class="pl-c1">1</span>] <span class="pl-k">-</span> mContentTop);
+            }
+        });
+        anim<span class="pl-k">.</span>addListener(<span class="pl-k">new</span> <span class="pl-smi">Animator</span>.<span class="pl-smi">AnimatorListener</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onAnimationStart</span>(<span class="pl-smi">Animator</span> <span class="pl-v">animation</span>) {
+
+            }
+
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onAnimationEnd</span>(<span class="pl-smi">Animator</span> <span class="pl-v">animation</span>) {
+                mContentView<span class="pl-k">.</span>removeView(mAnimItem);
+                <span class="pl-k">if</span> (mOnThrowListener <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                    mOnThrowListener<span class="pl-k">.</span>onThrowEnd();
+                }
+            }
+
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onAnimationCancel</span>(<span class="pl-smi">Animator</span> <span class="pl-v">animation</span>) {
+
+            }
+
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onAnimationRepeat</span>(<span class="pl-smi">Animator</span> <span class="pl-v">animation</span>) {
+
+            }
+        });
+        anim<span class="pl-k">.</span>start();
+    }
+
+
+
+    <span class="pl-k">public</span> <span class="pl-k">interface</span> <span class="pl-en">ThrowListener</span> {
+        <span class="pl-k">void</span> <span class="pl-en">onThrowEnd</span>();
+    }
+}
+</pre></div>
+
+<p>activity代码</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">package</span> <span class="pl-smi">com.nurmemet.bezeircurve</span>;
+
+<span class="pl-k">import</span> <span class="pl-smi">android.app.Activity</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.graphics.PointF</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.os.Bundle</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.view.View</span>;
+<span class="pl-k">import</span> <span class="pl-smi">android.view.ViewGroup</span>;
+
+<span class="pl-c">/**</span>
+<span class="pl-c"> * Created by nurmemet on 10/16/2016.</span>
+<span class="pl-c"> */</span>
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">AnimAct</span> <span class="pl-k">extends</span> <span class="pl-e">Activity</span> {
+    <span class="pl-k">private</span> <span class="pl-smi">View</span> mStartView;
+    <span class="pl-k">private</span> <span class="pl-smi">View</span> mEndView;
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>(<span class="pl-smi">Bundle</span> <span class="pl-v">savedInstanceState</span>) {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onCreate(savedInstanceState);
+        setContentView(<span class="pl-smi">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>layout_anim);
+        mStartView <span class="pl-k">=</span> findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>start_);
+        mEndView <span class="pl-k">=</span> findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>end_);
+
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onThrow</span>(<span class="pl-smi">View</span> <span class="pl-v">view</span>) {
+
+        <span class="pl-k">int</span>[] start <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">2</span>];
+        mStartView<span class="pl-k">.</span>getLocationInWindow(start);
+        <span class="pl-k">int</span>[] end <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">int</span>[<span class="pl-c1">2</span>];
+        mEndView<span class="pl-k">.</span>getLocationInWindow(end);
+        <span class="pl-smi">ThrowAnim</span> mThrower <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ThrowAnim</span>(<span class="pl-v">this</span>, (<span class="pl-smi">ViewGroup</span>) findViewById(<span class="pl-smi">android<span class="pl-k">.</span>R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>content), <span class="pl-k">new</span> <span class="pl-smi">PointF</span>(end[<span class="pl-c1">0</span>], end[<span class="pl-c1">1</span>]), <span class="pl-k">new</span> <span class="pl-smi">PointF</span>(start[<span class="pl-c1">0</span>], start[<span class="pl-c1">1</span>]));
+        mThrower<span class="pl-k">.</span>setOnThrowListener(<span class="pl-k">new</span> <span class="pl-smi">ThrowAnim</span>.<span class="pl-smi">ThrowListener</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onThrowEnd</span>() {
+
+            }
+        });
+        mThrower<span class="pl-k">.</span>move();
+    }
+}
+</pre></div>
 
 <ol>
-<li><a href="animation/beseir_cart_anim.html">贝塞尔曲线实现购物车动画</a></li>
-<li>windows开始动画</li>
+<li>主要用到函数mPathMeasuer.getPosTan(length * value, mDesPoint, null);路径上寻找指定位置的点的坐标mDesPoint是大小为
+2的数组<br>
+</li>
+<li>activity内容容器android.R.id.content<br>
+</li>
+<li>getLocationInWindow函数</li>
 </ol>
 </article></body></html>
