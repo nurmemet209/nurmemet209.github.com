@@ -724,6 +724,8 @@ pre {
 </style><title>git_basic_use</title></head><body><article class="markdown-body"><h1>
 <a id="user-content-git-基本操作" class="anchor" href="#git-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>git 基本操作</h1>
 
+<p><a href="http://rogerdudler.github.io/git-guide/index.zh.html">git 入门</a></p>
+
 <ul>
 <li>远程分支同步到本地</li>
 </ul>
@@ -739,10 +741,20 @@ pre {
 </code></pre>
 
 <ul>
-<li>同步到远程服务器</li>
+<li>将本地新建的分支同步到远程服务器</li>
 </ul>
 
 <pre lang="git"><code>git push origin branchName
+//它会在远程服务器新建一个分支
+</code></pre>
+
+<p><a href="images/git_base_use_6.png" target="_blank"><img src="images/git_base_use_6.png" alt="" style="max-width:100%;"></a>
+<a href="images/git_base_use_7.png" target="_blank"><img src="images/git_base_use_7.png" alt="" style="max-width:100%;"></a></p>
+
+<p>*把远程分支同步到本地</p>
+
+<pre lang="git"><code>git fetch origin branchName
+//然后再用git checkout branchName 命令切换就好了
 </code></pre>
 
 <ul>
@@ -754,6 +766,15 @@ pre {
 </code></pre>
 
 <p><a href="images/git/show_branch_list.png" target="_blank"><img src="images/git/show_branch_list.png" alt="" style="max-width:100%;"></a></p>
+
+<ul>
+<li>列出远程本地所有分支</li>
+</ul>
+
+<pre lang="git"><code>git branch -a
+</code></pre>
+
+<p><a href="images/git_base_use_5.png" target="_blank"><img src="images/git_base_use_5.png" alt="" style="max-width:100%;"></a>  </p>
 
 <ul>
 <li>分支切换</li>
@@ -832,8 +853,12 @@ untracked files:</p>
 <p>git 操作流程是先用 如果是untracked files（是没被添加到git的文件） 用git add file-name 命令添加到暂存区，如果是changes to be commited 的文件用git add file-name 命令添加到暂存区或者用git checkout 命令覆盖本地更改，如果是git changes to be commited文件那么用命令 git commit -m notes(是注释) 来提交到本地仓库，再用git push origin命令提交远程仓库</p>
 
 <ul>
-<li>git commit
+<li><p>git commit
 可以用git commit -m notes(是注释) 提交到本地仓库，如果忘了后面的-m notes 而用git commit 命令git 会打开Vim让你输入
-notes 你可输入notes 再按Esc键进入命令模式再输入:wq保存并返回shell，，此时已经陈功提交到远程仓库</li>
+notes 你可输入notes 再按Esc键进入命令模式再输入:wq保存并返回shell，，此时已经陈功提交到远程仓库</p></li>
+<li><p>本地仓库推到远程服务器</p></li>
 </ul>
+
+<pre lang="git"><code>git remote add origin &lt;server&gt;
+</code></pre>
 </article></body></html>

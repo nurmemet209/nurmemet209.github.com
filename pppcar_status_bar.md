@@ -9,6 +9,7 @@
 * statusBarColor
 
 * windowTranslucentNavigation
+底部虚拟按你区域背景，比如nexus5
 
 * navigationBarColor
 

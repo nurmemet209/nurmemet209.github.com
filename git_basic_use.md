@@ -1,5 +1,5 @@
 #git 基本操作
-
+[git 入门](http://rogerdudler.github.io/git-guide/index.zh.html)  
 * 远程分支同步到本地
 ```git
 git checkout  branchName
@@ -10,9 +10,19 @@ git checkout  branchName
 git branch branchName
 ```
 
-* 同步到远程服务器
+* 将本地新建的分支同步到远程服务器
 ```git
 git push origin branchName
+//它会在远程服务器新建一个分支
+```
+
+![](images/git_base_use_6.png)
+![](images/git_base_use_7.png)
+
+*把远程分支同步到本地
+```git
+git fetch origin branchName
+//然后再用git checkout branchName 命令切换就好了
 ```
 
 * 列出本地分支
@@ -21,6 +31,13 @@ git branch
 //带星号的是当前分支
 ```
 ![](images/git/show_branch_list.png)
+
+* 列出远程本地所有分支
+```git
+git branch -a
+```
+
+![](images/git_base_use_5.png)  
 
 * 分支切换
 ```git
@@ -83,3 +100,7 @@ git 操作流程是先用 如果是untracked files（是没被添加到git的文
 可以用git commit -m notes(是注释) 提交到本地仓库，如果忘了后面的-m notes 而用git commit 命令git 会打开Vim让你输入
 notes 你可输入notes 再按Esc键进入命令模式再输入:wq保存并返回shell，，此时已经陈功提交到远程仓库
 
+* 本地仓库推到远程服务器
+```git
+git remote add origin <server>
+```

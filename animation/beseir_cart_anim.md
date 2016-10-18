@@ -162,4 +162,9 @@ public class AnimAct extends Activity {
 1. 主要用到函数mPathMeasuer.getPosTan(length * value, mDesPoint, null);路径上寻找指定位置的点的坐标mDesPoint是大小为
 2的数组  
 2. activity内容容器android.R.id.content  
-3. getLocationInWindow函数
+3. getLocationInWindow函数  
+
+[github地址](https://github.com/nurmemet209/BezeirCarve)
+
+
+
