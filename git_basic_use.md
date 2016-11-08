@@ -104,3 +104,9 @@ notes 你可输入notes 再按Esc键进入命令模式再输入:wq保存并返�
 ```git
 git remote add origin <server>
 ```
+
+
+* Android Sutdio 某个文件退回到历史本地版本
+选中某个文件->右键 show history->找到想要退回的历史版本  
+![](images/git_android_studio.png)
+

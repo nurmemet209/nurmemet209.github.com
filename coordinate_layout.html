@@ -1,0 +1,2407 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>coordinate_layout</title></head><body><article class="markdown-body"><h1 id="coordinatelayoutappbarlayout"><a name="user-content-coordinatelayoutappbarlayout" href="#coordinatelayoutappbarlayout" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>CoordinateLayout,AppBarLayout滚动原理与源码分析</h1>
+<p>效果图<br />
+<img alt="" src="///D://github_blog/nurmemet209.github.com/images/coordinate_layout.gif" /></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.design.widget.CoordinatorLayout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    tools:context=&quot;com.example.nurmemet.appbarlayoout.MainActivity&quot;
+    &gt;
+
+    &lt;android.support.design.widget.AppBarLayout
+        android:id=&quot;@+id/app_bar_layout&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;vertical&quot;
+        &gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id=&quot;@+id/tool_bar&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;?actionBarSize&quot;
+            app:layout_scrollFlags=&quot;scroll&quot;
+            &gt;
+        &lt;/android.support.v7.widget.Toolbar&gt;
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id=&quot;@+id/recycle_view&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;
+        &gt;&lt;/android.support.v7.widget.RecyclerView&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;
+
+</code></pre>
+
+<pre><code class="java">package com.example.nurmemet.appbarlayoout;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    Toolbar mToolBar;
+    RecyclerView mRecycleView;
+    Adapter mAdapter;
+    AppBarLayout mAppbarLayout;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_);
+        mToolBar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolBar);
+        mRecycleView = (RecyclerView) findViewById(R.id.recycle_view);
+        mAdapter = new Adapter(this, stringCitys);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecycleView.setLayoutManager(manager);
+        mRecycleView.setAdapter(mAdapter);
+
+        mAppbarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        mRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+
+
+    }
+
+    public static String[] stringCitys = new String[]{
+            &quot;合肥&quot;, &quot;张家界&quot;, &quot;宿州&quot;, &quot;淮北&quot;, &quot;阜阳&quot;, &quot;蚌埠&quot;, &quot;淮南&quot;, &quot;滁州&quot;,
+            &quot;马鞍山&quot;, &quot;芜湖&quot;, &quot;铜陵&quot;, &quot;安庆&quot;, &quot;安阳&quot;, &quot;黄山&quot;, &quot;六安&quot;, &quot;巢湖&quot;,
+            &quot;池州&quot;, &quot;宣城&quot;, &quot;亳州&quot;, &quot;明光&quot;, &quot;天长&quot;, &quot;桐城&quot;, &quot;宁国&quot;,
+            &quot;徐州&quot;, &quot;连云港&quot;, &quot;宿迁&quot;, &quot;淮安&quot;, &quot;盐城&quot;, &quot;扬州&quot;, &quot;泰州&quot;,
+            &quot;南通&quot;, &quot;镇江&quot;, &quot;常州&quot;, &quot;无锡&quot;, &quot;苏州&quot;, &quot;江阴&quot;, &quot;宜兴&quot;,
+            &quot;邳州&quot;, &quot;新沂&quot;, &quot;金坛&quot;, &quot;溧阳&quot;, &quot;常熟&quot;, &quot;张家港&quot;, &quot;太仓&quot;,
+            &quot;昆山&quot;, &quot;吴江&quot;, &quot;如皋&quot;, &quot;通州&quot;, &quot;海门&quot;, &quot;启东&quot;, &quot;大丰&quot;,
+            &quot;东台&quot;, &quot;高邮&quot;, &quot;仪征&quot;, &quot;江都&quot;, &quot;扬中&quot;, &quot;句容&quot;, &quot;丹阳&quot;,
+            &quot;兴化&quot;, &quot;姜堰&quot;, &quot;泰兴&quot;, &quot;靖江&quot;, &quot;福州&quot;, &quot;南平&quot;, &quot;三明&quot;,
+            &quot;复兴&quot;, &quot;高领&quot;, &quot;共兴&quot;, &quot;柯家寨&quot;, &quot;匹克&quot;, &quot;匹夫&quot;, &quot;旗舰&quot;, &quot;启航&quot;,
+            &quot;如阳&quot;, &quot;如果&quot;, &quot;科比&quot;, &quot;韦德&quot;, &quot;诺维斯基&quot;, &quot;麦迪&quot;, &quot;乔丹&quot;, &quot;姚明&quot;
+    };
+
+    static class Adapter extends RecyclerView.Adapter&lt;Adapter.CustomViewHolder&gt; {
+        private Context mContext;
+        private String[] mArray;
+
+        public Adapter(Context mContext, String[] mArray) {
+            this.mContext = mContext;
+            this.mArray = mArray;
+        }
+
+        @Override
+        public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_list, parent, false);
+            return new CustomViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(CustomViewHolder holder, int position) {
+            holder.mTextView.setText(mArray[position]);
+        }
+
+        @Override
+        public int getItemCount() {
+            if (mArray != null) {
+                return mArray.length;
+            }
+            return 0;
+        }
+
+        static class CustomViewHolder extends RecyclerView.ViewHolder {
+            public TextView mTextView;
+
+            public CustomViewHolder(View itemView) {
+                super(itemView);
+                mTextView = (TextView) itemView.findViewById(R.id.name);
+            }
+        }
+    }
+}
+
+
+</code></pre>
+
+<p>RecycleView,CoordinateView,AppBarLayout之间的交互过程</p>
+<p>首先是从RecycleView的OnTouchEvent开始</p>
+<pre><code class="java"> case MotionEvent.ACTION_DOWN: {
+                mScrollPointerId = e.getPointerId(0);
+                mInitialTouchX = mLastTouchX = (int) (e.getX() + 0.5f);
+                mInitialTouchY = mLastTouchY = (int) (e.getY() + 0.5f);
+
+                int nestedScrollAxis = ViewCompat.SCROLL_AXIS_NONE;
+                if (canScrollHorizontally) {
+                    nestedScrollAxis |= ViewCompat.SCROLL_AXIS_HORIZONTAL;
+                }
+                if (canScrollVertically) {
+                    nestedScrollAxis |= ViewCompat.SCROLL_AXIS_VERTICAL;
+                }
+                startNestedScroll(nestedScrollAxis);
+            } break;
+
+</code></pre>
+
+<p>startNestedScroll是NestedScrollingChild里的函数<br />
+<pre><code class="java"> @Override
+public boolean startNestedScroll(int axes) {
+    return getScrollingChildHelper().startNestedScroll(axes);
+}
+</code></pre><br />
+NestedScrollingChildHelper是个辅助类</p>
+<pre><code class="java"> public boolean startNestedScroll(int axes) {
+        if (hasNestedScrollingParent()) {
+            // Already in progress
+            return true;
+        }
+        if (isNestedScrollingEnabled()) {
+            ViewParent p = mView.getParent();
+            View child = mView;
+            while (p != null) {
+                if (ViewParentCompat.onStartNestedScroll(p, child, mView, axes)) {
+                    mNestedScrollingParent = p;
+                    ViewParentCompat.onNestedScrollAccepted(p, child, mView, axes);
+                    return true;
+                }
+                //注意此处child参数的变化，通过下面的代码可以看出child是抱着recycleview的CoordinateLayout的直接子View
+                if (p instanceof View) {
+                    child = (View) p;
+                }
+                p = p.getParent();
+            }
+        }
+        return false;
+    }
+</code></pre>
+
+<p><pre><code class="java">//此时parent是CoordinateLayout,child是recycleview,target也是recycleView,nestedScrollAxes是滚动方向
+public static boolean onStartNestedScroll(ViewParent parent, View child, View target,
+            int nestedScrollAxes) {
+        try {
+            return parent.onStartNestedScroll(child, target, nestedScrollAxes);
+        } catch (AbstractMethodError e) {
+            Log.e(TAG, &quot;ViewParent &quot; + parent + &quot; does not implement interface &quot; +
+                    &quot;method onStartNestedScroll&quot;, e);
+            return false;
+        }
+    }
+
+</code></pre><br />
+下面回到CoordinateLayout中的处理过程,上面方法是调用了CoordinateLayout的onStartNestedScroll方法，看下源码<br />
+<pre><code class="java">//函数各个参数的含义跟上面一样，这个函数是遍历直接子节点，寻找处理NestedScrolling的对象，这里还有一个问题
+//就是观察下面的函数发现，遍历过在寻找behavior，那么直接子节点的behavior是什么时候赋值的
+@Override
+public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
+    boolean handled = false;
+
+    final int childCount = getChildCount();
+    for (int i = 0; i &lt; childCount; i++) {
+        final View view = getChildAt(i);
+        final LayoutParams lp = (LayoutParams) view.getLayoutParams();
+        final Behavior viewBehavior = lp.getBehavior();
+        if (viewBehavior != null) {
+            final boolean accepted = viewBehavior.onStartNestedScroll(this, view, child, target,
+                    nestedScrollAxes);
+            handled |= accepted;
+
+            lp.acceptNestedScroll(accepted);
+        } else {
+            lp.acceptNestedScroll(false);
+        }
+    }
+    return handled;
+}
+
+</code></pre><br />
+源码里面有两个地方赋值behavior,一个是recycleview的hevior的赋值过程<br />
+<pre><code class="java">public LayoutParams(int width, int height) {
+            super(width, height);
+        }
+
+    LayoutParams(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        final TypedArray a = context.obtainStyledAttributes(attrs,
+                R.styleable.CoordinatorLayout_Layout);
+
+        this.gravity = a.getInteger(
+                R.styleable.CoordinatorLayout_Layout_android_layout_gravity,
+                Gravity.NO_GRAVITY);
+        mAnchorId = a.getResourceId(R.styleable.CoordinatorLayout_Layout_layout_anchor,
+                View.NO_ID);
+        this.anchorGravity = a.getInteger(
+                R.styleable.CoordinatorLayout_Layout_layout_anchorGravity,
+                Gravity.NO_GRAVITY);
+
+        this.keyline = a.getInteger(R.styleable.CoordinatorLayout_Layout_layout_keyline,
+                -1);
+
+        insetEdge = a.getInt(R.styleable.CoordinatorLayout_Layout_layout_insetEdge, 0);
+        dodgeInsetEdges = a.getInt(
+                R.styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges, 0);
+                //recycleview 的behavior是在这里赋值的，是载入布局的时候
+        mBehaviorResolved = a.hasValue(
+                R.styleable.CoordinatorLayout_Layout_layout_behavior);
+        if (mBehaviorResolved) {
+            mBehavior = parseBehavior(context, attrs, a.getString(
+                    R.styleable.CoordinatorLayout_Layout_layout_behavior));
+        }
+        a.recycle();
+
+        if (mBehavior != null) {
+            // If we have a Behavior, dispatch that it has been attached
+            mBehavior.onAttachedToLayoutParams(this);
+        }
+    }
+</code></pre><br />
+还有一个，在onMeasure-&gt;prepareChildren函数里面<br />
+<pre><code class="java">private void prepareChildren() {
+    mDependencySortedChildren.clear();
+    mChildDag.clear();
+
+    for (int i = 0, count = getChildCount(); i &lt; count; i++) {
+        final View view = getChildAt(i);
+
+        final LayoutParams lp = getResolvedLayoutParams(view);
+        lp.findAnchorView(this, view);
+
+        mChildDag.addNode(view);
+
+        // Now iterate again over the other children, adding any dependencies to the graph
+        for (int j = 0; j &lt; count; j++) {
+            if (j == i) {
+                continue;
+            }
+            final View other = getChildAt(j);
+            final LayoutParams otherLp = getResolvedLayoutParams(other);
+            if (otherLp.dependsOn(this, other, view)) {
+                if (!mChildDag.contains(other)) {
+                    // Make sure that the other node is added
+                    mChildDag.addNode(other);
+                }
+                // Now add the dependency to the graph
+                mChildDag.addEdge(view, other);
+            }
+        }
+    }
+
+    // Finally add the sorted graph list to our list
+    mDependencySortedChildren.addAll(mChildDag.getSortedList());
+    // We also need to reverse the result since we want the start of the list to contain
+    // Views which have no dependencies, then dependent views after that
+    Collections.reverse(mDependencySortedChildren);
+    }
+</code></pre><br />
+看看getResolvedLayoutParams源码<br />
+<pre><code class="java">LayoutParams getResolvedLayoutParams(View child) {
+    final LayoutParams result = (LayoutParams) child.getLayoutParams();
+    if (!result.mBehaviorResolved) {
+        Class&lt;?&gt; childClass = child.getClass();
+
+        DefaultBehavior defaultBehavior = null;
+        //根据注解获取对应的hehavior，AppBarLayout的hehavior是通过注解定义的
+        while (childClass != null &amp;&amp;
+                (defaultBehavior = childClass.getAnnotation(DefaultBehavior.class)) == null) {
+            childClass = childClass.getSuperclass();
+        }
+        if (defaultBehavior != null) {
+            try {
+                result.setBehavior(defaultBehavior.value().newInstance());
+            } catch (Exception e) {
+                Log.e(TAG, &quot;Default behavior class &quot; + defaultBehavior.value().getName() +
+                        &quot; could not be instantiated. Did you forget a default constructor?&quot;, e);
+            }
+        }
+        result.mBehaviorResolved = true;
+    }
+    return result;
+}
+
+</code></pre><br />
+AppBarLayoutde的Behavior的注解定义<br />
+<pre><code class="java">//CoordinateLayout是根据这个注解获取behavior的
+@CoordinatorLayout.DefaultBehavior(AppBarLayout.Behavior.class)
+public class AppBarLayout extends LinearLayout {
+}
+
+</code></pre><br />
+下面回到CoordinateLayotu的onStartNestedScroll函数<br />
+<pre><code class="java">@Override
+public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
+    boolean handled = false;
+
+    final int childCount = getChildCount();
+    for (int i = 0; i &lt; childCount; i++) {
+        final View view = getChildAt(i);
+        final LayoutParams lp = (LayoutParams) view.getLayoutParams();
+        final Behavior viewBehavior = lp.getBehavior();
+        if (viewBehavior != null) {
+            final boolean accepted = viewBehavior.onStartNestedScroll(this, view, child, target,
+                    nestedScrollAxes);
+            handled |= accepted;
+
+            lp.acceptNestedScroll(accepted);
+        } else {
+            lp.acceptNestedScroll(false);
+        }
+    }
+    return handled;
+}
+
+</code></pre></p>
+<p>根据本例的布局，CoordinateLayout的第一个子布局是AppBarLayout而且他的Behavior的定义我们也知道了，下面看看Behavior的处理过程<br />
+注意AppBarLayout里面有两个Behavior，一个是在布局里面为RecycleView指定的ScrollingViewBehavior，一个是为AppBarLayout指定的Behavior<br />
+两个类同样实现了CoordinateLayotu的Behavior接口，只是这两个实现方式不同，决定AppBarLayout和RecycleView不同的行为,看看CoordinateLayout的Behavior接口的定义,有几个方式跟NestedScrollingParent,NestedScrollingChild的差不多，函数参数也是差不多的<br />
+<pre><code class="java">public static abstract class Behavior&lt;V extends View&gt; {
+
+        public Behavior() {
+        }
+
+
+        public Behavior(Context context, AttributeSet attrs) {
+        }
+
+        public void onAttachedToLayoutParams(@NonNull CoordinatorLayout.LayoutParams params) {
+        }
+
+        public void onDetachedFromLayoutParams() {
+        }
+
+        public boolean onInterceptTouchEvent(CoordinatorLayout parent, V child, MotionEvent ev) {
+            return false;
+        }
+
+        public boolean onTouchEvent(CoordinatorLayout parent, V child, MotionEvent ev) {
+            return false;
+        }
+
+        @ColorInt
+        public int getScrimColor(CoordinatorLayout parent, V child) {
+            return Color.BLACK;
+        }
+
+        @FloatRange(from = 0, to = 1)
+        public float getScrimOpacity(CoordinatorLayout parent, V child) {
+            return 0.f;
+        }
+
+
+        public boolean blocksInteractionBelow(CoordinatorLayout parent, V child) {
+            return getScrimOpacity(parent, child) &gt; 0.f;
+        }
+
+        public boolean layoutDependsOn(CoordinatorLayout parent, V child, View dependency) {
+            return false;
+        }
+
+        public boolean onDependentViewChanged(CoordinatorLayout parent, V child, View dependency) {
+            return false;
+        }
+
+
+        public void onDependentViewRemoved(CoordinatorLayout parent, V child, View dependency) {
+        }
+
+        @Deprecated
+        public boolean isDirty(CoordinatorLayout parent, V child) {
+            return false;
+        }
+
+        public boolean onMeasureChild(CoordinatorLayout parent, V child,
+                int parentWidthMeasureSpec, int widthUsed,
+                int parentHeightMeasureSpec, int heightUsed) {
+            return false;
+        }
+
+        public boolean onLayoutChild(CoordinatorLayout parent, V child, int layoutDirection) {
+            return false;
+        }
+
+        public static void setTag(View child, Object tag) {
+            final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+            lp.mBehaviorTag = tag;
+        }
+
+        public static Object getTag(View child) {
+            final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+            return lp.mBehaviorTag;
+        }
+
+        public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout,
+                V child, View directTargetChild, View target, int nestedScrollAxes) {
+            return false;
+        }
+
+
+        public void onNestedScrollAccepted(CoordinatorLayout coordinatorLayout, V child,
+                View directTargetChild, View target, int nestedScrollAxes) {
+            // Do nothing
+        }
+
+
+        public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, V child, View target) {
+            // Do nothing
+        }
+
+
+        public void onNestedScroll(CoordinatorLayout coordinatorLayout, V child, View target,
+                int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+            // Do nothing
+        }
+
+        public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, V child, View target,
+                int dx, int dy, int[] consumed) {
+            // Do nothing
+        }
+
+
+        public boolean onNestedFling(CoordinatorLayout coordinatorLayout, V child, View target,
+                float velocityX, float velocityY, boolean consumed) {
+            return false;
+        }
+
+
+        public boolean onNestedPreFling(CoordinatorLayout coordinatorLayout, V child, View target,
+                float velocityX, float velocityY) {
+            return false;
+        }
+
+        @NonNull
+        public WindowInsetsCompat onApplyWindowInsets(CoordinatorLayout coordinatorLayout,
+                V child, WindowInsetsCompat insets) {
+            return insets;
+        }
+
+
+        public boolean onRequestChildRectangleOnScreen(CoordinatorLayout coordinatorLayout,
+                V child, Rect rectangle, boolean immediate) {
+            return false;
+        }
+
+
+        public void onRestoreInstanceState(CoordinatorLayout parent, V child, Parcelable state) {
+            // no-op
+        }
+
+
+        public Parcelable onSaveInstanceState(CoordinatorLayout parent, V child) {
+            return BaseSavedState.EMPTY_STATE;
+        }
+
+
+        public boolean getInsetDodgeRect(@NonNull CoordinatorLayout parent, @NonNull V child,
+                @NonNull Rect rect) {
+            return false;
+        }
+    }
+
+</code></pre></p>
+<p>下面看看AppBarLayoutBehavior的Behavior类的onStartNestedScroll<br />
+<pre><code class="java">@Override
+public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child,
+        View directTargetChild, View target, int nestedScrollAxes) {
+    // Return true if we're nested scrolling vertically, and we have scrollable children
+    // and the scrolling view is big enough to scroll
+    //判断滚动方向
+    //判断有没有滚动的空间，这里还有一个函数比较关键，也就是hasScrollableChildren()
+    final boolean started = (nestedScrollAxes &amp; ViewCompat.SCROLL_AXIS_VERTICAL) != 0
+            &amp;&amp; child.hasScrollableChildren()
+            &amp;&amp; parent.getHeight() - directTargetChild.getHeight() &lt;= child.getHeight();
+
+    if (started &amp;&amp; mOffsetAnimator != null) {
+        // Cancel any offset animation
+        mOffsetAnimator.cancel();
+    }
+
+    // A new nested scroll has started so clear out the previous ref
+    mLastNestedScrollingChildRef = null;
+
+    return started;
+}
+</code></pre></p>
+<pre><code class="java">boolean hasScrollableChildren() {
+    return getTotalScrollRange() != 0;
+}
+
+</code></pre>
+
+<pre><code class="java"> public final int getTotalScrollRange() {
+    if (mTotalScrollRange != INVALID_SCROLL_RANGE) {
+        return mTotalScrollRange;
+    }
+
+    //注意下面的循环遍历过程，首先是取出AppBarLayout的直接子View的LayoutParams
+    //判断它有没有SCROLL_FLAG_SCROLL标志也就是布局里面定义的layout_scrollFlags属性
+    //如果没有，直接退出循环，函数直接返回，意思是如果你在布局里面AppBarLayout的里面的
+    //第一个View有没有layout_scrollFlags属性是关键，无论它是什么View
+    int range = 0;
+    for (int i = 0, z = getChildCount(); i &lt; z; i++) {
+        final View child = getChildAt(i);
+        final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+        final int childHeight = child.getMeasuredHeight();
+        final int flags = lp.mScrollFlags;
+
+        if ((flags &amp; LayoutParams.SCROLL_FLAG_SCROLL) != 0) {
+            // We're set to scroll so add the child's height
+            range += childHeight + lp.topMargin + lp.bottomMargin;
+
+            if ((flags &amp; LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED) != 0) {
+                // For a collapsing scroll, we to take the collapsed height into account.
+                // We also break straight away since later views can't scroll beneath
+                // us
+                range -= ViewCompat.getMinimumHeight(child);
+                break;
+            }
+        } else {
+            // As soon as a view doesn't have the scroll flag, we end the range calculation.
+            // This is because views below can not scroll under a fixed view.
+            break;
+        }
+    }
+    return mTotalScrollRange = Math.max(0, range - getTopInset());
+}
+</code></pre>
+
+<p>NestedScroolingChild其他函数的传递过程也是跟上面的一样的，执行顺序是onStartNestedScroll-&gt;onNestedScrollAccepted-&gt;onNestedPreScroll-&gt;onNestedScroll下面看看Behavior的源码，onNestedPreScroll源码<br />
+<pre><code class="java">/*
+dx,dy是RecycleView将要滚动多少距离，后面的consumed是大小为2的数组，在Behavior里面你可以返回你要消耗多少距离
+
+*/
+ @Override
+public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
+    int xConsumed = 0;
+    int yConsumed = 0;
+    boolean accepted = false;
+
+    final int childCount = getChildCount();
+    for (int i = 0; i &lt; childCount; i++) {
+        final View view = getChildAt(i);
+        final LayoutParams lp = (LayoutParams) view.getLayoutParams();
+        if (!lp.isNestedScrollAccepted()) {
+            continue;
+        }
+
+        final Behavior viewBehavior = lp.getBehavior();
+        if (viewBehavior != null) {
+            mTempIntPair[0] = mTempIntPair[1] = 0;
+            viewBehavior.onNestedPreScroll(this, view, target, dx, dy, mTempIntPair);
+
+            xConsumed = dx &gt; 0 ? Math.max(xConsumed, mTempIntPair[0])
+                    : Math.min(xConsumed, mTempIntPair[0]);
+            yConsumed = dy &gt; 0 ? Math.max(yConsumed, mTempIntPair[1])
+                    : Math.min(yConsumed, mTempIntPair[1]);
+
+            accepted = true;
+        }
+    }
+
+    consumed[0] = xConsumed;
+    consumed[1] = yConsumed;
+
+    if (accepted) {
+        onChildViewsChanged(EVENT_NESTED_SCROLL);
+    }
+}
+</code></pre></p>
+<pre><code class="java">/*
+dxConsumed,dyConsumed是RecycleView消耗了多少，未消耗多少，这个跟前面的onNestedPreScroll里面的参数对应，这个函数是RecycleView滚动完
+之后执行的，onNestedPreScroll是RecycleView滚动之前执行
+*/
+@Override
+public void onNestedScroll(View target, int dxConsumed, int dyConsumed,
+        int dxUnconsumed, int dyUnconsumed) {
+    final int childCount = getChildCount();
+    boolean accepted = false;
+
+    for (int i = 0; i &lt; childCount; i++) {
+        final View view = getChildAt(i);
+        final LayoutParams lp = (LayoutParams) view.getLayoutParams();
+        if (!lp.isNestedScrollAccepted()) {
+            continue;
+        }
+
+        final Behavior viewBehavior = lp.getBehavior();
+        if (viewBehavior != null) {
+            viewBehavior.onNestedScroll(this, view, target, dxConsumed, dyConsumed,
+                    dxUnconsumed, dyUnconsumed);
+            accepted = true;
+        }
+    }
+
+    if (accepted) {
+        onChildViewsChanged(EVENT_NESTED_SCROLL);
+    }
+}
+
+</code></pre>
+
+<p>下面看看AppBarLayout里面定义的两个Behavior<br />
+<pre><code class="java">/*
+    次Behavior主要控制本例中ToolBar的滚动行为
+
+*/
+
+ public static class Behavior extends HeaderBehavior&lt;AppBarLayout&gt; {
+    private static final int MAX_OFFSET_ANIMATION_DURATION = 600; // ms
+    private static final int INVALID_POSITION = -1;
+
+    /**
+     * Callback to allow control over any {@link AppBarLayout} dragging.
+     */
+    public static abstract class DragCallback {
+        /**
+         * Allows control over whether the given {@link AppBarLayout} can be dragged or not.
+         *
+         * &lt;p&gt;Dragging is defined as a direct touch on the AppBarLayout with movement. This
+         * call does not affect any nested scrolling.&lt;/p&gt;
+         *
+         * @return true if we are in a position to scroll the AppBarLayout via a drag, false
+         *         if not.
+         */
+        public abstract boolean canDrag(@NonNull AppBarLayout appBarLayout);
+    }
+
+    private int mOffsetDelta;
+
+    private boolean mSkipNestedPreScroll;
+    private boolean mWasNestedFlung;
+
+    private ValueAnimatorCompat mOffsetAnimator;
+
+    private int mOffsetToChildIndexOnLayout = INVALID_POSITION;
+    private boolean mOffsetToChildIndexOnLayoutIsMinHeight;
+    private float mOffsetToChildIndexOnLayoutPerc;
+
+    private WeakReference&lt;View&gt; mLastNestedScrollingChildRef;
+    private DragCallback mOnDragCallback;
+
+    public Behavior() {}
+
+    public Behavior(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    @Override
+    public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child,
+            View directTargetChild, View target, int nestedScrollAxes) {
+        // Return true if we're nested scrolling vertically, and we have scrollable children
+        // and the scrolling view is big enough to scroll
+        final boolean started = (nestedScrollAxes &amp; ViewCompat.SCROLL_AXIS_VERTICAL) != 0
+                &amp;&amp; child.hasScrollableChildren()
+                &amp;&amp; parent.getHeight() - directTargetChild.getHeight() &lt;= child.getHeight();
+
+        if (started &amp;&amp; mOffsetAnimator != null) {
+            // Cancel any offset animation
+            mOffsetAnimator.cancel();
+        }
+
+        // A new nested scroll has started so clear out the previous ref
+        mLastNestedScrollingChildRef = null;
+
+        return started;
+    }
+
+    @Override
+    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child,
+            View target, int dx, int dy, int[] consumed) {
+        if (dy != 0 &amp;&amp; !mSkipNestedPreScroll) {
+            int min, max;
+            if (dy &lt; 0) {
+                // We're scrolling down
+                min = -child.getTotalScrollRange();
+                max = min + child.getDownNestedPreScrollRange();
+            } else {
+                // We're scrolling up
+                min = -child.getUpNestedPreScrollRange();
+                max = 0;
+            }
+            consumed[1] = scroll(coordinatorLayout, child, dy, min, max);
+        }
+    }
+
+    @Override
+    public void onNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child,
+            View target, int dxConsumed, int dyConsumed,
+            int dxUnconsumed, int dyUnconsumed) {
+        if (dyUnconsumed &lt; 0) {
+            // If the scrolling view is scrolling down but not consuming, it's probably be at
+            // the top of it's content
+            scroll(coordinatorLayout, child, dyUnconsumed,
+                    -child.getDownNestedScrollRange(), 0);
+            // Set the expanding flag so that onNestedPreScroll doesn't handle any events
+            mSkipNestedPreScroll = true;
+        } else {
+            // As we're no longer handling nested scrolls, reset the skip flag
+            mSkipNestedPreScroll = false;
+        }
+    }
+
+    @Override
+    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout abl,
+            View target) {
+        if (!mWasNestedFlung) {
+            // If we haven't been flung then let's see if the current view has been set to snap
+            snapToChildIfNeeded(coordinatorLayout, abl);
+        }
+
+        // Reset the flags
+        mSkipNestedPreScroll = false;
+        mWasNestedFlung = false;
+        // Keep a reference to the previous nested scrolling child
+        mLastNestedScrollingChildRef = new WeakReference&lt;&gt;(target);
+    }
+
+    @Override
+    public boolean onNestedFling(final CoordinatorLayout coordinatorLayout,
+            final AppBarLayout child, View target, float velocityX, float velocityY,
+            boolean consumed) {
+        boolean flung = false;
+
+        if (!consumed) {
+            // It has been consumed so let's fling ourselves
+            flung = fling(coordinatorLayout, child, -child.getTotalScrollRange(),
+                    0, -velocityY);
+        } else {
+            // If we're scrolling up and the child also consumed the fling. We'll fake scroll
+            // up to our 'collapsed' offset
+            if (velocityY &lt; 0) {
+                // We're scrolling down
+                final int targetScroll = -child.getTotalScrollRange()
+                        + child.getDownNestedPreScrollRange();
+                if (getTopBottomOffsetForScrollingSibling() &lt; targetScroll) {
+                    // If we're currently not expanded more than the target scroll, we'll
+                    // animate a fling
+                    animateOffsetTo(coordinatorLayout, child, targetScroll, velocityY);
+                    flung = true;
+                }
+            } else {
+                // We're scrolling up
+                final int targetScroll = -child.getUpNestedPreScrollRange();
+                if (getTopBottomOffsetForScrollingSibling() &gt; targetScroll) {
+                    // If we're currently not expanded less than the target scroll, we'll
+                    // animate a fling
+                    animateOffsetTo(coordinatorLayout, child, targetScroll, velocityY);
+                    flung = true;
+                }
+            }
+        }
+
+        mWasNestedFlung = flung;
+        return flung;
+    }
+
+    /**
+     * Set a callback to control any {@link AppBarLayout} dragging.
+     *
+     * @param callback the callback to use, or {@code null} to use the default behavior.
+     */
+    public void setDragCallback(@Nullable DragCallback callback) {
+        mOnDragCallback = callback;
+    }
+
+    private void animateOffsetTo(final CoordinatorLayout coordinatorLayout,
+            final AppBarLayout child, final int offset, float velocity) {
+        final int distance = Math.abs(getTopBottomOffsetForScrollingSibling() - offset);
+
+        final int duration;
+        velocity = Math.abs(velocity);
+        if (velocity &gt; 0) {
+            duration = 3 * Math.round(1000 * (distance / velocity));
+        } else {
+            final float distanceRatio = (float) distance / child.getHeight();
+            duration = (int) ((distanceRatio + 1) * 150);
+        }
+
+        animateOffsetWithDuration(coordinatorLayout, child, offset, duration);
+    }
+
+    private void animateOffsetWithDuration(final CoordinatorLayout coordinatorLayout,
+            final AppBarLayout child, final int offset, final int duration) {
+        final int currentOffset = getTopBottomOffsetForScrollingSibling();
+        if (currentOffset == offset) {
+            if (mOffsetAnimator != null &amp;&amp; mOffsetAnimator.isRunning()) {
+                mOffsetAnimator.cancel();
+            }
+            return;
+        }
+
+        if (mOffsetAnimator == null) {
+            mOffsetAnimator = ViewUtils.createAnimator();
+            mOffsetAnimator.setInterpolator(AnimationUtils.DECELERATE_INTERPOLATOR);
+            mOffsetAnimator.addUpdateListener(new ValueAnimatorCompat.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimatorCompat animator) {
+                    setHeaderTopBottomOffset(coordinatorLayout, child,
+                            animator.getAnimatedIntValue());
+                }
+            });
+        } else {
+            mOffsetAnimator.cancel();
+        }
+
+        mOffsetAnimator.setDuration(Math.min(duration, MAX_OFFSET_ANIMATION_DURATION));
+        mOffsetAnimator.setIntValues(currentOffset, offset);
+        mOffsetAnimator.start();
+    }
+
+    private int getChildIndexOnOffset(AppBarLayout abl, final int offset) {
+        for (int i = 0, count = abl.getChildCount(); i &lt; count; i++) {
+            View child = abl.getChildAt(i);
+            if (child.getTop() &lt;= -offset &amp;&amp; child.getBottom() &gt;= -offset) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void snapToChildIfNeeded(CoordinatorLayout coordinatorLayout, AppBarLayout abl) {
+        final int offset = getTopBottomOffsetForScrollingSibling();
+        final int offsetChildIndex = getChildIndexOnOffset(abl, offset);
+        if (offsetChildIndex &gt;= 0) {
+            final View offsetChild = abl.getChildAt(offsetChildIndex);
+            final LayoutParams lp = (LayoutParams) offsetChild.getLayoutParams();
+            final int flags = lp.getScrollFlags();
+
+            if ((flags &amp; LayoutParams.FLAG_SNAP) == LayoutParams.FLAG_SNAP) {
+                // We're set the snap, so animate the offset to the nearest edge
+                int snapTop = -offsetChild.getTop();
+                int snapBottom = -offsetChild.getBottom();
+
+                if (offsetChildIndex == abl.getChildCount() - 1) {
+                    // If this is the last child, we need to take the top inset into account
+                    snapBottom += abl.getTopInset();
+                }
+
+                if (checkFlag(flags, LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED)) {
+                    // If the view is set only exit until it is collapsed, we'll abide by that
+                    snapBottom += ViewCompat.getMinimumHeight(offsetChild);
+                } else if (checkFlag(flags, LayoutParams.FLAG_QUICK_RETURN
+                        | LayoutParams.SCROLL_FLAG_ENTER_ALWAYS)) {
+                    // If it's set to always enter collapsed, it actually has two states. We
+                    // select the state and then snap within the state
+                    final int seam = snapBottom + ViewCompat.getMinimumHeight(offsetChild);
+                    if (offset &lt; seam) {
+                        snapTop = seam;
+                    } else {
+                        snapBottom = seam;
+                    }
+                }
+
+                final int newOffset = offset &lt; (snapBottom + snapTop) / 2
+                        ? snapBottom
+                        : snapTop;
+                animateOffsetTo(coordinatorLayout, abl,
+                        MathUtils.constrain(newOffset, -abl.getTotalScrollRange(), 0), 0);
+            }
+        }
+    }
+
+    private static boolean checkFlag(final int flags, final int check) {
+        return (flags &amp; check) == check;
+    }
+
+    @Override
+    public boolean onMeasureChild(CoordinatorLayout parent, AppBarLayout child,
+            int parentWidthMeasureSpec, int widthUsed, int parentHeightMeasureSpec,
+            int heightUsed) {
+        final CoordinatorLayout.LayoutParams lp =
+                (CoordinatorLayout.LayoutParams) child.getLayoutParams();
+        if (lp.height == CoordinatorLayout.LayoutParams.WRAP_CONTENT) {
+            // If the view is set to wrap on it's height, CoordinatorLayout by default will
+            // cap the view at the CoL's height. Since the AppBarLayout can scroll, this isn't
+            // what we actually want, so we measure it ourselves with an unspecified spec to
+            // allow the child to be larger than it's parent
+            parent.onMeasureChild(child, parentWidthMeasureSpec, widthUsed,
+                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), heightUsed);
+            return true;
+        }
+
+        // Let the parent handle it as normal
+        return super.onMeasureChild(parent, child, parentWidthMeasureSpec, widthUsed,
+                parentHeightMeasureSpec, heightUsed);
+    }
+
+    @Override
+    public boolean onLayoutChild(CoordinatorLayout parent, AppBarLayout abl,
+            int layoutDirection) {
+        boolean handled = super.onLayoutChild(parent, abl, layoutDirection);
+
+        final int pendingAction = abl.getPendingAction();
+        if (pendingAction != PENDING_ACTION_NONE) {
+            final boolean animate = (pendingAction &amp; PENDING_ACTION_ANIMATE_ENABLED) != 0;
+            if ((pendingAction &amp; PENDING_ACTION_COLLAPSED) != 0) {
+                final int offset = -abl.getUpNestedPreScrollRange();
+                if (animate) {
+                    animateOffsetTo(parent, abl, offset, 0);
+                } else {
+                    setHeaderTopBottomOffset(parent, abl, offset);
+                }
+            } else if ((pendingAction &amp; PENDING_ACTION_EXPANDED) != 0) {
+                if (animate) {
+                    animateOffsetTo(parent, abl, 0, 0);
+                } else {
+                    setHeaderTopBottomOffset(parent, abl, 0);
+                }
+            }
+        } else if (mOffsetToChildIndexOnLayout &gt;= 0) {
+            View child = abl.getChildAt(mOffsetToChildIndexOnLayout);
+            int offset = -child.getBottom();
+            if (mOffsetToChildIndexOnLayoutIsMinHeight) {
+                offset += ViewCompat.getMinimumHeight(child);
+            } else {
+                offset += Math.round(child.getHeight() * mOffsetToChildIndexOnLayoutPerc);
+            }
+            setTopAndBottomOffset(offset);
+        }
+
+        // Finally reset any pending states
+        abl.resetPendingAction();
+        mOffsetToChildIndexOnLayout = INVALID_POSITION;
+
+        // We may have changed size, so let's constrain the top and bottom offset correctly,
+        // just in case we're out of the bounds
+        setTopAndBottomOffset(
+                MathUtils.constrain(getTopAndBottomOffset(), -abl.getTotalScrollRange(), 0));
+
+        // Make sure we dispatch the offset update
+        abl.dispatchOffsetUpdates(getTopAndBottomOffset());
+
+        return handled;
+    }
+
+    @Override
+    boolean canDragView(AppBarLayout view) {
+        if (mOnDragCallback != null) {
+            // If there is a drag callback set, it's in control
+            return mOnDragCallback.canDrag(view);
+        }
+
+        // Else we'll use the default behaviour of seeing if it can scroll down
+        if (mLastNestedScrollingChildRef != null) {
+            // If we have a reference to a scrolling view, check it
+            final View scrollingView = mLastNestedScrollingChildRef.get();
+            return scrollingView != null &amp;&amp; scrollingView.isShown()
+                    &amp;&amp; !ViewCompat.canScrollVertically(scrollingView, -1);
+        } else {
+            // Otherwise we assume that the scrolling view hasn't been scrolled and can drag.
+            return true;
+        }
+    }
+
+    @Override
+    void onFlingFinished(CoordinatorLayout parent, AppBarLayout layout) {
+        // At the end of a manual fling, check to see if we need to snap to the edge-child
+        snapToChildIfNeeded(parent, layout);
+    }
+
+    @Override
+    int getMaxDragOffset(AppBarLayout view) {
+        return -view.getDownNestedScrollRange();
+    }
+
+    @Override
+    int getScrollRangeForDragFling(AppBarLayout view) {
+        return view.getTotalScrollRange();
+    }
+
+    @Override
+    int setHeaderTopBottomOffset(CoordinatorLayout coordinatorLayout,
+            AppBarLayout appBarLayout, int newOffset, int minOffset, int maxOffset) {
+        final int curOffset = getTopBottomOffsetForScrollingSibling();
+        int consumed = 0;
+
+        if (minOffset != 0 &amp;&amp; curOffset &gt;= minOffset &amp;&amp; curOffset &lt;= maxOffset) {
+            // If we have some scrolling range, and we're currently within the min and max
+            // offsets, calculate a new offset
+            newOffset = MathUtils.constrain(newOffset, minOffset, maxOffset);
+            if (curOffset != newOffset) {
+                final int interpolatedOffset = appBarLayout.hasChildWithInterpolator()
+                        ? interpolateOffset(appBarLayout, newOffset)
+                        : newOffset;
+
+                final boolean offsetChanged = setTopAndBottomOffset(interpolatedOffset);
+
+                // Update how much dy we have consumed
+                consumed = curOffset - newOffset;
+                // Update the stored sibling offset
+                mOffsetDelta = newOffset - interpolatedOffset;
+
+                if (!offsetChanged &amp;&amp; appBarLayout.hasChildWithInterpolator()) {
+                    // If the offset hasn't changed and we're using an interpolated scroll
+                    // then we need to keep any dependent views updated. CoL will do this for
+                    // us when we move, but we need to do it manually when we don't (as an
+                    // interpolated scroll may finish early).
+                    coordinatorLayout.dispatchDependentViewsChanged(appBarLayout);
+                }
+
+                // Dispatch the updates to any listeners
+                appBarLayout.dispatchOffsetUpdates(getTopAndBottomOffset());
+
+                // Update the AppBarLayout's drawable state (for any elevation changes)
+                updateAppBarLayoutDrawableState(coordinatorLayout, appBarLayout, newOffset,
+                        newOffset &lt; curOffset ? -1 : 1);
+            }
+        } else {
+            // Reset the offset delta
+            mOffsetDelta = 0;
+        }
+
+        return consumed;
+    }
+
+    @VisibleForTesting
+    boolean isOffsetAnimatorRunning() {
+        return mOffsetAnimator != null &amp;&amp; mOffsetAnimator.isRunning();
+    }
+
+    private int interpolateOffset(AppBarLayout layout, final int offset) {
+        final int absOffset = Math.abs(offset);
+
+        for (int i = 0, z = layout.getChildCount(); i &lt; z; i++) {
+            final View child = layout.getChildAt(i);
+            final AppBarLayout.LayoutParams childLp = (LayoutParams) child.getLayoutParams();
+            final Interpolator interpolator = childLp.getScrollInterpolator();
+
+            if (absOffset &gt;= child.getTop() &amp;&amp; absOffset &lt;= child.getBottom()) {
+                if (interpolator != null) {
+                    int childScrollableHeight = 0;
+                    final int flags = childLp.getScrollFlags();
+                    if ((flags &amp; LayoutParams.SCROLL_FLAG_SCROLL) != 0) {
+                        // We're set to scroll so add the child's height plus margin
+                        childScrollableHeight += child.getHeight() + childLp.topMargin
+                                + childLp.bottomMargin;
+
+                        if ((flags &amp; LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED) != 0) {
+                            // For a collapsing scroll, we to take the collapsed height
+                            // into account.
+                            childScrollableHeight -= ViewCompat.getMinimumHeight(child);
+                        }
+                    }
+
+                    if (ViewCompat.getFitsSystemWindows(child)) {
+                        childScrollableHeight -= layout.getTopInset();
+                    }
+
+                    if (childScrollableHeight &gt; 0) {
+                        final int offsetForView = absOffset - child.getTop();
+                        final int interpolatedDiff = Math.round(childScrollableHeight *
+                                interpolator.getInterpolation(
+                                        offsetForView / (float) childScrollableHeight));
+
+                        return Integer.signum(offset) * (child.getTop() + interpolatedDiff);
+                    }
+                }
+
+                // If we get to here then the view on the offset isn't suitable for interpolated
+                // scrolling. So break out of the loop
+                break;
+            }
+        }
+
+        return offset;
+    }
+
+    private void updateAppBarLayoutDrawableState(final CoordinatorLayout parent,
+            final AppBarLayout layout, final int offset, final int direction) {
+        final View child = getAppBarChildOnOffset(layout, offset);
+        if (child != null) {
+            final AppBarLayout.LayoutParams childLp = (LayoutParams) child.getLayoutParams();
+            final int flags = childLp.getScrollFlags();
+            boolean collapsed = false;
+
+            if ((flags &amp; LayoutParams.SCROLL_FLAG_SCROLL) != 0) {
+                final int minHeight = ViewCompat.getMinimumHeight(child);
+
+                if (direction &gt; 0 &amp;&amp; (flags &amp; (LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+                        | LayoutParams.SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED)) != 0) {
+                    // We're set to enter always collapsed so we are only collapsed when
+                    // being scrolled down, and in a collapsed offset
+                    collapsed = -offset &gt;= child.getBottom() - minHeight - layout.getTopInset();
+                } else if ((flags &amp; LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED) != 0) {
+                    // We're set to exit until collapsed, so any offset which results in
+                    // the minimum height (or less) being shown is collapsed
+                    collapsed = -offset &gt;= child.getBottom() - minHeight - layout.getTopInset();
+                }
+            }
+
+            final boolean changed = layout.setCollapsedState(collapsed);
+
+            if (changed &amp;&amp; Build.VERSION.SDK_INT &gt;= 11
+                    &amp;&amp; shouldJumpElevationState(parent, layout)) {
+                // If the collapsed state changed, we may need to
+                // jump to the current state if we have an overlapping view
+                layout.jumpDrawablesToCurrentState();
+            }
+        }
+    }
+
+    private boolean shouldJumpElevationState(CoordinatorLayout parent, AppBarLayout layout) {
+        // We should jump the elevated state if we have a dependent scrolling view which has
+        // an overlapping top (i.e. overlaps us)
+        final List&lt;View&gt; dependencies = parent.getDependents(layout);
+        for (int i = 0, size = dependencies.size(); i &lt; size; i++) {
+            final View dependency = dependencies.get(i);
+            final CoordinatorLayout.LayoutParams lp =
+                    (CoordinatorLayout.LayoutParams) dependency.getLayoutParams();
+            final CoordinatorLayout.Behavior behavior = lp.getBehavior();
+
+            if (behavior instanceof ScrollingViewBehavior) {
+                return ((ScrollingViewBehavior) behavior).getOverlayTop() != 0;
+            }
+        }
+        return false;
+    }
+
+    private static View getAppBarChildOnOffset(final AppBarLayout layout, final int offset) {
+        final int absOffset = Math.abs(offset);
+        for (int i = 0, z = layout.getChildCount(); i &lt; z; i++) {
+            final View child = layout.getChildAt(i);
+            if (absOffset &gt;= child.getTop() &amp;&amp; absOffset &lt;= child.getBottom()) {
+                return child;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    int getTopBottomOffsetForScrollingSibling() {
+        return getTopAndBottomOffset() + mOffsetDelta;
+    }
+
+    @Override
+    public Parcelable onSaveInstanceState(CoordinatorLayout parent, AppBarLayout abl) {
+        final Parcelable superState = super.onSaveInstanceState(parent, abl);
+        final int offset = getTopAndBottomOffset();
+
+        // Try and find the first visible child...
+        for (int i = 0, count = abl.getChildCount(); i &lt; count; i++) {
+            View child = abl.getChildAt(i);
+            final int visBottom = child.getBottom() + offset;
+
+            if (child.getTop() + offset &lt;= 0 &amp;&amp; visBottom &gt;= 0) {
+                final SavedState ss = new SavedState(superState);
+                ss.firstVisibleChildIndex = i;
+                ss.firstVisibleChildAtMinimumHeight =
+                        visBottom == (ViewCompat.getMinimumHeight(child) + abl.getTopInset());
+                ss.firstVisibleChildPercentageShown = visBottom / (float) child.getHeight();
+                return ss;
+            }
+        }
+
+        // Else we'll just return the super state
+        return superState;
+    }
+
+    @Override
+    public void onRestoreInstanceState(CoordinatorLayout parent, AppBarLayout appBarLayout,
+            Parcelable state) {
+        if (state instanceof SavedState) {
+            final SavedState ss = (SavedState) state;
+            super.onRestoreInstanceState(parent, appBarLayout, ss.getSuperState());
+            mOffsetToChildIndexOnLayout = ss.firstVisibleChildIndex;
+            mOffsetToChildIndexOnLayoutPerc = ss.firstVisibleChildPercentageShown;
+            mOffsetToChildIndexOnLayoutIsMinHeight = ss.firstVisibleChildAtMinimumHeight;
+        } else {
+            super.onRestoreInstanceState(parent, appBarLayout, state);
+            mOffsetToChildIndexOnLayout = INVALID_POSITION;
+        }
+    }
+
+    protected static class SavedState extends AbsSavedState {
+        int firstVisibleChildIndex;
+        float firstVisibleChildPercentageShown;
+        boolean firstVisibleChildAtMinimumHeight;
+
+        public SavedState(Parcel source, ClassLoader loader) {
+            super(source, loader);
+            firstVisibleChildIndex = source.readInt();
+            firstVisibleChildPercentageShown = source.readFloat();
+            firstVisibleChildAtMinimumHeight = source.readByte() != 0;
+        }
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(firstVisibleChildIndex);
+            dest.writeFloat(firstVisibleChildPercentageShown);
+            dest.writeByte((byte) (firstVisibleChildAtMinimumHeight ? 1 : 0));
+        }
+
+        public static final Parcelable.Creator&lt;SavedState&gt; CREATOR =
+                ParcelableCompat.newCreator(new ParcelableCompatCreatorCallbacks&lt;SavedState&gt;() {
+                    @Override
+                    public SavedState createFromParcel(Parcel source, ClassLoader loader) {
+                        return new SavedState(source, loader);
+                    }
+
+                    @Override
+                    public SavedState[] newArray(int size) {
+                        return new SavedState[size];
+                    }
+                });
+    }
+}
+
+
+</code></pre></p>
+<p>下面是ScrollingViewBehavior</p>
+<pre><code class="java">/*
+    这个Behavior主要控制本例中RecycleView的布局变化行为
+*/
+/**
+ * Behavior which should be used by {@link View}s which can scroll vertically and support
+ * nested scrolling to automatically scroll any {@link AppBarLayout} siblings.
+ */
+public static class ScrollingViewBehavior extends HeaderScrollingViewBehavior {
+
+    public ScrollingViewBehavior() {}
+
+    public ScrollingViewBehavior(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        final TypedArray a = context.obtainStyledAttributes(attrs,
+                R.styleable.ScrollingViewBehavior_Layout);
+        setOverlayTop(a.getDimensionPixelSize(
+                R.styleable.ScrollingViewBehavior_Layout_behavior_overlapTop, 0));
+        a.recycle();
+    }
+
+    @Override
+    public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
+        // We depend on any AppBarLayouts
+        return dependency instanceof AppBarLayout;
+    }
+
+    @Override
+    public boolean onDependentViewChanged(CoordinatorLayout parent, View child,
+            View dependency) {
+        offsetChildAsNeeded(parent, child, dependency);
+        return false;
+    }
+
+    @Override
+    public boolean onRequestChildRectangleOnScreen(CoordinatorLayout parent, View child,
+            Rect rectangle, boolean immediate) {
+        final AppBarLayout header = findFirstDependency(parent.getDependencies(child));
+        if (header != null) {
+            // Offset the rect by the child's left/top
+            rectangle.offset(child.getLeft(), child.getTop());
+
+            final Rect parentRect = mTempRect1;
+            parentRect.set(0, 0, parent.getWidth(), parent.getHeight());
+
+            if (!parentRect.contains(rectangle)) {
+                // If the rectangle can not be fully seen the visible bounds, collapse
+                // the AppBarLayout
+                header.setExpanded(false, !immediate);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void offsetChildAsNeeded(CoordinatorLayout parent, View child, View dependency) {
+        final CoordinatorLayout.Behavior behavior =
+                ((CoordinatorLayout.LayoutParams) dependency.getLayoutParams()).getBehavior();
+        if (behavior instanceof Behavior) {
+            // Offset the child, pinning it to the bottom the header-dependency, maintaining
+            // any vertical gap and overlap
+            final Behavior ablBehavior = (Behavior) behavior;
+            ViewCompat.offsetTopAndBottom(child, (dependency.getBottom() - child.getTop())
+                    + ablBehavior.mOffsetDelta
+                    + getVerticalLayoutGap()
+                    - getOverlapPixelsForOffset(dependency));
+        }
+    }
+
+    @Override
+    float getOverlapRatioForOffset(final View header) {
+        if (header instanceof AppBarLayout) {
+            final AppBarLayout abl = (AppBarLayout) header;
+            final int totalScrollRange = abl.getTotalScrollRange();
+            final int preScrollDown = abl.getDownNestedPreScrollRange();
+            final int offset = getAppBarLayoutOffset(abl);
+
+            if (preScrollDown != 0 &amp;&amp; (totalScrollRange + offset) &lt;= preScrollDown) {
+                // If we're in a pre-scroll down. Don't use the offset at all.
+                return 0;
+            } else {
+                final int availScrollRange = totalScrollRange - preScrollDown;
+                if (availScrollRange != 0) {
+                    // Else we'll use a interpolated ratio of the overlap, depending on offset
+                    return 1f + (offset / (float) availScrollRange);
+                }
+            }
+        }
+        return 0f;
+    }
+
+    private static int getAppBarLayoutOffset(AppBarLayout abl) {
+        final CoordinatorLayout.Behavior behavior =
+                ((CoordinatorLayout.LayoutParams) abl.getLayoutParams()).getBehavior();
+        if (behavior instanceof Behavior) {
+            return ((Behavior) behavior).getTopBottomOffsetForScrollingSibling();
+        }
+        return 0;
+    }
+
+    @Override
+    AppBarLayout findFirstDependency(List&lt;View&gt; views) {
+        for (int i = 0, z = views.size(); i &lt; z; i++) {
+            View view = views.get(i);
+            if (view instanceof AppBarLayout) {
+                return (AppBarLayout) view;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    int getScrollRange(View v) {
+        if (v instanceof AppBarLayout) {
+            return ((AppBarLayout) v).getTotalScrollRange();
+        } else {
+            return super.getScrollRange(v);
+        }
+    }
+}
+</code></pre></article></body></html>

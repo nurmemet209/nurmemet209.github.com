@@ -1,0 +1,2 @@
+#手势基本事件传递顺序
+关于手势事件的传递原理我会另写一篇文章，这里只是给出传递顺序当第一个手势按下去的时候ACTION_DOWN事件，第一个手势不松开按下第二个手势的时候不会发生ACTION_DOWN事件，而发生ACTION_POINTER_DOWN事件，当最后一个手势松开的时候才发生ACTION_UP事件，其他时候发生ACTION_POINTER_UP事件

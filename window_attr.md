@@ -30,3 +30,12 @@ This Drawable is overlaid over the foreground of the Window's content area, usua
 fitsSystemWindows  
 Boolean internal attribute to adjust view layout based on system windows such as the status bar. If true, adjusts the padding of this view to leave space for the system windows. Will only take effect if this view is in a non-embedded activity.  
 navigationBarColor  
+
+
+
+
+
+了涉及到法律的手机发送的连接方式的理解
+
+* WindowManager.LayoutParams.FLAG_SECURE
+防止截屏 activity setContentView之前getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
