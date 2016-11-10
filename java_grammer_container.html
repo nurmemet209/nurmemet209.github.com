@@ -1014,102 +1014,206 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>gradle_base_1</title></head><body><article class="markdown-body"><h1 id="gralde"><a name="user-content-gralde" href="#gralde" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gralde 基本</h1>
+</style><title>java_grammer_container</title></head><body><article class="markdown-body"><h1 id="java"><a name="user-content-java" href="#java" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>java 容器</h1>
 <ul>
-<li>
-<p>生成两个安装包<br />
-有的时候需要测试apk跟在线正式版本同时安装到手机方便对比<br />
-只修改下面的applicatonId就可以了，要修改应用名称可以修改mainfest.xml的application label标签<br />
-<pre><code class="groovy">
- defaultConfig {
-        applicationId &quot;com.cn.pppcar&quot;
-        minSdkVersion minSdkVersion_
-        targetSdkVersion targetSdkVersion_
-        versionCode pppcar_version_Code
-        versionName pppcar_version_Name
-        multiDexEnabled true
+<li>Vector与ArrayList<br />
+<pre><code class="java">
+public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
+        implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable
+{
+    ......
+    private static final long serialVersionUID = 8683452581122892189L;
 
-    }
-</code></pre></p>
-</li>
-<li>
-<p>gradle 多渠道打包<br />
-<pre><code class="xml"> &lt;meta-data
-            android:name=&quot;UMENG_CHANNEL&quot;
-            android:value=&quot;${UMENG_CHANNEL_VALUE}&quot;
-            /&gt;
-</code></pre></p>
-</li>
-</ul>
-<p>每次打包的时候把把上面的UMENG_CHANNEL_VALUE换成渠道名称，友盟统计根据此值分开统计各个渠道报的下载量<br />
-<pre><code class="groovy">   defaultConfig {
-        applicationId &quot;com.cn.pppcar&quot;
-        minSdkVersion minSdkVersion_
-        targetSdkVersion targetSdkVersion_
-        versionCode pppcar_version_Code
-        versionName pppcar_version_Name
-        multiDexEnabled true
-        manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;default_channel&quot;]
+    /**
+     * Default initial capacity.
+     */
+    private static final int DEFAULT_CAPACITY = 10;
+    ......
 
-    }
-
-    productFlavors {
-        default_channel {}
-        wandoujia {}
-        _360 {}
-        yingyongbao {}
-        xiaomi {}
-        baidu {}
-        huawei {}
-        jifeng {}
-    }
-
-    productFlavors.all { flavor -&gt;
-        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-
-    }
-
-
-</code></pre></p>
-<pre><code class="groovy">
-//下面代码的作用给每次生成的apk起对应的名字，此段代码不在android{}当中，是最外面
-android.applicationVariants.all { variant -&gt;
-    variant.outputs.each { output -&gt;
-        def outputFile = output.outputFile
-        if (outputFile != null &amp;&amp; outputFile.name.endsWith('.apk')) {
-            File outputDirectory = new File(outputFile.parent);
-            def fileName
-            if (variant.buildType.name == &quot;release&quot;) {
-//                    fileName = &quot;app_v${defaultConfig.versionName}_${packageTime()}_${variant.productFlavors[0].name}.apk&quot;
-                fileName = &quot;caixiangji_${variant.productFlavors[0].name}.apk&quot;
-            } else {
-//                    fileName = &quot;app_v${defaultConfig.versionName}_${packageTime()}_beta.apk&quot;
-                fileName = &quot;caixiangji_${variant.productFlavors[0].name}_beta.apk&quot;
-            }
-            output.outputFile = new File(outputDirectory, fileName)
-        }
+        public boolean add(E e) {
+        ensureCapacityInternal(size + 1);  // Increments modCount!!
+        elementData[size++] = e;
+        return true;
     }
 }
 
+</code></pre></li>
+</ul>
+<pre><code class="java">
+public class Vector&lt;E&gt;
+    extends AbstractList&lt;E&gt;
+    implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable
+{
+    /**
+     * The array buffer into which the components of the vector are
+     * stored. The capacity of the vector is the length of this array buffer,
+     * and is at least large enough to contain all the vector's elements.
+     *
+     * &lt;p&gt;Any array elements following the last element in the Vector are null.
+     *
+     * @serial
+     */
+    protected Object[] elementData;
+
+    /**
+     * The number of valid components in this {@code Vector} object.
+     * Components {@code elementData[0]} through
+     * {@code elementData[elementCount-1]} are the actual items.
+     *
+     * @serial
+     */
+    protected int elementCount;
+
+    .....
+
+      public synchronized void addElement(E obj) {
+        modCount++;
+        ensureCapacityHelper(elementCount + 1);
+        elementData[elementCount++] = obj;
+    }
+
+    ......
+}
 
 </code></pre>
 
-<p>可以单个生成某个渠道的安装包<br />
-<img alt="" src="///D://github_blog/nurmemet209.github.com/images/gradle_flavors.png" /><br />
-也可以用命令行生成单个渠道app<br />
-gradlew assembleWandoujiaRelease<br />
-也可以批量生成安装包，android studio terminal 输入<br />
-gradlew assembleRelease<br />
-<img alt="" src="///D://github_blog/nurmemet209.github.com/images/gradle_flavors_1.png" />  </p>
-<ul>
-<li>提高gradle编译速度<br />
-项目根目录下的gradle.properties文件夹内容如下,根目录下的gradle.properties文件的优先级高于单个moudle的gradle.properties文件的优先级</li>
-</ul>
-<pre><code class="properties">org.gradle.configureondemand=true
-org.gradle.daemon=true
-android.useDeprecatedNdk=true
-org.gradle.jvmargs=-Xmx4096m -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
-org.gradle.parallel=true
+<p>通过源码可以看出Vector跟ArrayList都是线性存储结构，其中Vector是线程安全的，ArrayList不是，还有一些实现细节</p>
+<p>以下是LinkedList源码，可以看出LinkedList是链表存储结构，节省内存但是，增删该查有点麻烦<br />
+<pre><code class="java">
+public class LinkedList&lt;E&gt;
+    extends AbstractSequentialList&lt;E&gt;
+    implements List&lt;E&gt;, Deque&lt;E&gt;, Cloneable, java.io.Serializable
+{
+    transient int size = 0;
+
+    /**
+     * Pointer to first node.
+     * Invariant: (first == null &amp;&amp; last == null) ||
+     *            (first.prev == null &amp;&amp; first.item != null)
+     */
+    transient Node&lt;E&gt; first;
+
+    /**
+     * Pointer to last node.
+     * Invariant: (first == null &amp;&amp; last == null) ||
+     *            (last.next == null &amp;&amp; last.item != null)
+     */
+    transient Node&lt;E&gt; last;
+}
 
 
-</code></pre></article></body></html>
+</code></pre></p>
+<p>HashSet源码如下,hashSet在内部是用HashMap实现的，允许有空置，不允许重复<br />
+<pre><code class="java">
+
+public class HashSet&lt;E&gt;
+    extends AbstractSet&lt;E&gt;
+    implements Set&lt;E&gt;, Cloneable, java.io.Serializable
+{
+    static final long serialVersionUID = -5024744406713321676L;
+
+    private transient HashMap&lt;E,Object&gt; map;
+
+    // Dummy value to associate with an Object in the backing Map
+    private static final Object PRESENT = new Object();
+
+    /**
+     * Constructs a new, empty set; the backing &lt;tt&gt;HashMap&lt;/tt&gt; instance has
+     * default initial capacity (16) and load factor (0.75).
+     */
+    public HashSet() {
+        map = new HashMap&lt;&gt;();
+    }
+    ....
+}
+
+
+</code></pre></p>
+<p>HashMap源码,允许key有空置，允许value有空置，key不重复，非线程安全<br />
+<pre><code class="java">
+public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt;
+    implements Map&lt;K,V&gt;, Cloneable, Serializable {
+
+    private static final long serialVersionUID = 362498820763181265L;
+
+    .....
+
+}
+
+
+</code></pre></p>
+<p>HashTable 源码,可以看出hashtable是线程安全的，不允许key为空，不允许value为空，同样key不能重复<br />
+<pre><code class="java">
+public class Hashtable&lt;K,V&gt;
+    extends Dictionary&lt;K,V&gt;
+    implements Map&lt;K,V&gt;, Cloneable, java.io.Serializable {
+
+    /**
+     * The hash table data.
+     */
+    private transient Entry&lt;?,?&gt;[] table;
+
+    /**
+     * The total number of entries in the hash table.
+     */
+    private transient int count;
+
+    /**
+     * The table is rehashed when its size exceeds this threshold.  (The
+     * value of this field is (int)(capacity * loadFactor).)
+     *
+     * @serial
+     */
+    private int threshold;
+
+    /**
+     * The load factor for the hashtable.
+     *
+     * @serial
+     */
+    private float loadFactor;
+
+    .....
+
+        public synchronized boolean isEmpty() {
+        return count == 0;
+    }
+
+
+    .....
+}
+
+</code></pre></p>
+<p>TreeMap源码，非线程安全，允许value为空，不允许key为空，key不能重复<br />
+<pre><code class="java">public class TreeMap&lt;K,V&gt;
+    extends AbstractMap&lt;K,V&gt;
+    implements NavigableMap&lt;K,V&gt;, Cloneable, java.io.Serializable
+{
+    /**
+     * The comparator used to maintain order in this tree map, or
+     * null if it uses the natural ordering of its keys.
+     *
+     * @serial
+     */
+    private final Comparator&lt;? super K&gt; comparator;
+
+    private transient Entry&lt;K,V&gt; root;
+
+    /**
+     * The number of entries in the tree
+     */
+    private transient int size = 0;
+
+    /**
+     * The number of structural modifications to the tree.
+     */
+    private transient int modCount = 0;
+    ....
+
+
+    final Entry&lt;K,V&gt; getEntry(Object key) {
+    }
+    ....
+}
+
+</code></pre></p></article></body></html>

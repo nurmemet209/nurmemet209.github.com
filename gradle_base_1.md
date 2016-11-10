@@ -1,6 +1,6 @@
 #gralde 基本
 
-1. 生成两个安装包  
+* 生成两个安装包  
 有的时候需要测试apk跟在线正式版本同时安装到手机方便对比  
 只修改下面的applicatonId就可以了，要修改应用名称可以修改mainfest.xml的application label标签
 ```groovy
@@ -18,7 +18,7 @@
 
 
 
-2. gradle 多渠道打包
+* gradle 多渠道打包
 ```xml
  <meta-data
             android:name="UMENG_CHANNEL"
@@ -84,8 +84,22 @@ android.applicationVariants.all { variant ->
 
 可以单个生成某个渠道的安装包  
 ![](images/gradle_flavors.png)  
+也可以用命令行生成单个渠道app  
+gradlew assembleWandoujiaRelease
 也可以批量生成安装包，android studio terminal 输入  
 gradlew assembleRelease  
-![](images/gradle_flavors_1.png)
+![](images/gradle_flavors_1.png)  
 
 
+*  提高gradle编译速度  
+项目根目录下的gradle.properties文件夹内容如下,根目录下的gradle.properties文件的优先级高于单个moudle的gradle.properties文件的优先级
+
+```properties
+org.gradle.configureondemand=true
+org.gradle.daemon=true
+android.useDeprecatedNdk=true
+org.gradle.jvmargs=-Xmx4096m -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+org.gradle.parallel=true
+
+
+```
