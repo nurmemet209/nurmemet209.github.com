@@ -27,3 +27,21 @@
                         UiThreadImmediateExecutorService.getInstance());
 
 ```
+
+2. 获取缓存图片地址
+```java
+
+  public void getChachedAddr(View view) {
+        ImageRequest request = ImageRequest.fromUri(url);
+        CacheKey cacheKey = DefaultCacheKeyFactory.getInstance().getEncodedCacheKey(request, null);
+        boolean hasCached = ImagePipelineFactory.getInstance().getMainFileCache().hasKey(cacheKey);
+        if (hasCached) {
+            BinaryResource binaryResource = ImagePipelineFactory.getInstance().getMainFileCache().getResource(cacheKey);
+            File file = ((FileBinaryResource) binaryResource).getFile();
+            if (file != null) {
+                mChacheAddr.setText(file.getAbsolutePath());
+            }
+        }
+    }
+
+```
