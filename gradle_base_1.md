@@ -1,5 +1,11 @@
 #gralde 基本
 
+* gradle最佳配置实践
+[gradle最佳配置](http://gold.xitu.io/post/582d606767f3560063320b21)
+* gradle 打包提速最佳实践
+[打包提速](https://gold.xitu.io/entry/5831302aa22b9d006b89140e)
+* 
+
 * 生成两个安装包  
 有的时候需要测试apk跟在线正式版本同时安装到手机方便对比  
 只修改下面的applicatonId就可以了，要修改应用名称可以修改mainfest.xml的application label标签
