@@ -103,3 +103,8 @@ org.gradle.parallel=true
 
 
 ```
+
+* 多渠道打包美团解决方案
+[多渠道打包](http://tech.meituan.com/mt-apk-adaptation.html)
+* 另一种更快捷的多渠道打包方式
+[zip写入comment的方式写入实现多渠道打包](https://github.com/seven456/MultiChannelPackageTool)
