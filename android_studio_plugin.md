@@ -10,4 +10,6 @@
 8. Android-DPI-Calculator
 9. Android Studio Prettify  
 自动生成findviewbyid，还有代码里的字符串移到string.xml文件中
-10. .ignore
+10. .ignore   
+git过滤
+11. 阅读github源码插件 (chrome)

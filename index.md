@@ -7,3 +7,4 @@
 4. [sublime text及其插件的安裝](sublime_text_install.html)
 5. [sublime text 编写markdown](sublime_text_write_markdown.html)
 6. [gradle基本使用(多渠道打包)1](gradle_base_1.html)
+7. [android multidex](multidex.html)
